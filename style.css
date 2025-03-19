@@ -1,0 +1,73 @@
+.navbar {
+    transition: background-color 0.3s ease-in-out;
+}
+.navbar.scrolled {
+    background-color: #181818!important;
+}
+.navbar.scrolled .nav-link, 
+.navbar.scrolled .navbar-brand {
+    color: white !important;
+}
+.navbar.scrolled .btn-dark {
+    background-color: white !important;
+    color: black !important;
+    border-color: white !important;
+}
+@media (max-width: 990px) and (min-width: 768px) {
+.col-md-4 {
+min-width: 320px; /* Adjust as needed */
+}
+}
+@media (max-width:1070px) {
+#home h1{
+margin-top: -50px;
+}
+#home p{
+font-size:20px;
+}}
+#loading-screen {
+position: fixed;
+width: 100%;
+height: 100vh;
+background: rgb(144, 235, 235); /* Match your theme */
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.8s ease-in-out, visibility 0.9s ease-in-out;
+}
+
+#loading-screen.hidden {
+opacity: 0;
+visibility: hidden;
+}
+
+#content {
+opacity: 0;
+transition: opacity 1s ease-in-out;
+}
+#content.show {
+opacity: 1;
+}
+.btn-dark{
+transition:background-color 0.4s ease-in-out,color 0.4s ease-in-out,border-color 0.4s ease-in-out;
+}
+.btn-dark:hover {
+background-color: white ;
+color: black ;
+border-color: black; 
+}
+.navbar .nav-link{
+transition: color 0.4s ease-in-out,transform 0.4s ease-in-out;
+}
+.navbar .nav-link:hover {
+color: rgb(0, 0, 0);
+transform: scale(1.1); 
+}
+.btn-lg{
+transition: transform 0.4s ease-in-out,background-color 0.4s ease-in-out;
+}
+.btn-lg:hover {
+transform: scale(1.05);
+
+}
