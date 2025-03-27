@@ -130,3 +130,12 @@ footer a i:hover {
     transform: scale(1.2);
     transition: all 0.3s ease-in-out;
 }
+.animated-title span {
+    display: inline-block;
+    transition: transform 0.5s ease, color 0.5s ease;
+}
+
+.animated-title span.active {
+    transform: scale(1.5);
+    color: aqua;
+}
