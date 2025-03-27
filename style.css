@@ -3,14 +3,14 @@
 }
 .reveal {
     opacity: 0;
-    transform: translateY(50px) scale(0.95);
-    transition: all 1s  ease-in-out;
-}
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 .card {
     border-radius: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -87,5 +87,33 @@ transition: transform 0.4s ease-in-out,background-color 0.4s ease-in-out;
 }
 .btn-lg:hover {
 transform: scale(1.05);
+
+}
+.cursor{
+    background-color:transparent;
+    border: 2px solid rgba(110, 208, 233, 0.685);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%,-50%);
+    pointer-events:none;
+transition: width 0.6s ease,height 0.6s ease,background-color 0.3s ease;
+z-index: 9999;
+}
+.card {
+    border-radius: 15px;
+    transition: transform 0.7s, box-shadow 0.3s, opacity 0.3s;
+    opacity: 0.7;
+}
+.card:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); 
+    opacity: 1;
+}
+@media (max-width: 800px) {
+    .card {
+        opacity: 1;
+    }
 
 }
