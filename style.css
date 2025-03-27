@@ -71,7 +71,7 @@ opacity: 1;
 transition:background-color 0.4s ease-in-out,color 0.4s ease-in-out,border-color 0.4s ease-in-out;
 }
 .btn-dark:hover {
-background-color: white ;
+background-color: rgba(255, 255, 255, 0) ;
 color: black ;
 border-color: black; 
 }
@@ -103,11 +103,11 @@ z-index: 9999;
 }
 .card {
     border-radius: 15px;
-    transition: transform 0.7s, box-shadow 0.3s, opacity 0.3s;
+    transition: transform 1s, box-shadow 0.3s, opacity 0.5s;
     opacity: 0.7;
 }
 .card:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.1) rotate(2deg);
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); 
     opacity: 1;
 }
@@ -116,4 +116,17 @@ z-index: 9999;
         opacity: 1;
     }
 
+}
+
+footer a:not(i):hover {
+    color: #007bff; 
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+}
+
+
+footer a i:hover {
+    color: #000000;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
 }
