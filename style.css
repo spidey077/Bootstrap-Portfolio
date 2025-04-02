@@ -11,6 +11,7 @@
     opacity: 1;
     transform: translateY(0);
 }
+
 .card {
     border-radius: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -36,6 +37,12 @@
 min-width: 320px; 
 }
 }
+@media (max-width: 768px) {
+    .cursor{
+        visibility: hidden;
+    }
+}
+
 @media (max-width:1070px) {
 #home h1{
 margin-top: -50px;
