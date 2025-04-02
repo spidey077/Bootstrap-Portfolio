@@ -149,3 +149,16 @@ footer a i:hover {
     transform: scale(1.5);
     color: aqua;
 }
+
+
+.navbar-brand svg path {
+    fill: black;
+    transition: fill 0.5s ease-in-out;
+}
+
+.navbar-brand:hover svg path {
+    fill: rgb(255, 255, 255);
+}
+.navbar.scrolled .navbar-brand svg path {
+    fill: white;
+}
