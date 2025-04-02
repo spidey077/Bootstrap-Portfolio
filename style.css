@@ -41,6 +41,9 @@ min-width: 320px;
     .cursor{
         visibility: hidden;
     }
+    #lottie-animation1 {
+        visibility: hidden;
+    }
 }
 
 @media (max-width:1070px) {
