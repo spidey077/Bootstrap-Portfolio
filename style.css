@@ -162,3 +162,15 @@ footer a i:hover {
 .navbar.scrolled .navbar-brand svg path {
     fill: white;
 }
+    .btn-custom-outline {
+        border: 2px solid #212529;
+        background-color: transparent;
+        color: #212529;
+        transition: all 0.5s ease;
+    }
+
+    .btn-custom-outline:hover {
+        background-color: #212529;
+        color: #fff;
+        border: none;
+    }
