@@ -219,6 +219,16 @@
                 </div>
             </div>
         </section>
+        <div id="chatbot-wrapper">
+    <div class="chatbot-button" onclick="toggleChatbot()">💬</div>
+
+    <div class="container" id="chatbotContainer">
+      <h2>Ask a Question (FAQ Chatbot)</h2>
+      <textarea id="question" placeholder="Type your question here..."></textarea><br>
+      <button onclick="askOpenAI()">Ask</button>
+      <div id="response"></div>
+    </div>
+  </div>
         <footer id="links" class="text-black py-4 " style="background-color: rgb(144, 235, 235);">
             <div class="container text-center " style="padding-top:50px ;padding-bottom:20px;">
                 <div class="row py-1 ">
