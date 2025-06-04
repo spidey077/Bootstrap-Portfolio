@@ -283,10 +283,19 @@ footer a i:hover {
       background-color: #4a4ae0;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      #chatbot-wrapper .container {
-        width: 90%;
-        padding: 20px;
-      }
-    }
+@media (max-width: 600px) {
+  #chatbot-wrapper {
+    bottom: 20px;        
+    right: 20px;        
+    transform: none;       
+    max-width: 80vw;      
+    width: 80vw;
+    align-items: flex-end; 
+  }
+
+  #chatbot-wrapper .container {
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+  }
+}
