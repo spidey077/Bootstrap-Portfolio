@@ -303,6 +303,11 @@ footer a i:hover {
     box-shadow: 0 0 0 rgba(108, 108, 255, 0);
   }
 }
+#chatbot-wrapper .chatbot-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease-in-out;
+}
 @media (max-width: 600px) {
   #chatbot-wrapper {
     bottom: 20px;
