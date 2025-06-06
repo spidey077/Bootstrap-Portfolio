@@ -230,7 +230,7 @@ footer a i:hover {
   box-shadow: 0 0 10px rgba(108, 108, 255, 0.2);
 }
 #chatbot-wrapper button {
-  background-color: #6c6cff;
+  background-color: #464647;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -240,7 +240,7 @@ footer a i:hover {
   transition: background-color 0.3s, transform 0.2s;
 }
 #chatbot-wrapper button:hover {
-  background-color: #4a4ae0;
+  background-color: #202020;
   transform: scale(1.03);
 }
 #chatbot-wrapper #response {
@@ -257,7 +257,7 @@ footer a i:hover {
   animation: fadeIn 0.4s ease forwards;
 }
 #chatbot-wrapper .chatbot-button {
-  background-color: #6c6cff;
+  background-color: #313131;
   color: white;
   padding: 15px;
   border-radius: 50%;
@@ -270,7 +270,7 @@ footer a i:hover {
   animation: pulse 2s infinite ease-in-out;
 }
 #chatbot-wrapper .chatbot-button:hover {
-  background-color: #4a4ae0;
+  background-color: #141414;
   transform: scale(1.1);
 }
 @keyframes fadeIn {
@@ -316,4 +316,13 @@ footer a i:hover {
     max-width: 320px;
     padding: 20px;
   }
+}
+.slider img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.slider img:hover {
+    transform: scale(1.15);
+    opacity: 1;
 }
