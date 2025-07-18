@@ -326,29 +326,37 @@ footer a i:hover {
     max-width: 320px;
     padding: 20px;
   }
-    .slider-track img {
-  width: 60px;
-  height: 60px;
-}
 }
 .slider-container {
-  width: 80%;
   overflow: hidden;
-  margin: 0 auto;
+  position: relative;
+  width: 100%; /* Make full width */
+  margin: auto;
 }
 
 .slider-track {
   display: flex;
-  gap: 4rem;
-  animation: scroll 90s linear infinite;
+  gap: 2rem; /* Reduced gap for tighter fit on mobile */
+  animation: scroll 20s linear infinite;
   align-items: center;
-  width: max-content;
 }
 
 .slider-track img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+}
+
+/* Adjust for small devices */
+@media (max-width: 480px) {
+  .slider-track img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .slider-track {
+    gap: 1rem;
+  }
 }
 
 @keyframes scroll {
