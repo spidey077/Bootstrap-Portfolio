@@ -334,13 +334,13 @@ footer a i:hover {
 .slider-track {
   display: flex;
   gap: 2rem;
-  animation: scroll 25s linear infinite;
+  animation: scroll 20s linear infinite;
   align-items: center;
 }
 
 .slider-track img {
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   object-fit: contain;
 }
 
