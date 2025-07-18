@@ -326,10 +326,9 @@ footer a i:hover {
   }
 }
 .slider-container {
+  width: 80%;
   overflow: hidden;
-  position: relative;
-  width: 60%;
-
+  margin: 0 auto;
 }
 
 .slider-track {
@@ -337,11 +336,12 @@ footer a i:hover {
   gap: 4rem;
   animation: scroll 20s linear infinite;
   align-items: center;
+  width: max-content;
 }
 
 .slider-track img {
-  height: 100px;
   width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 
@@ -353,3 +353,4 @@ footer a i:hover {
     transform: translateX(-50%);
   }
 }
+
