@@ -334,3 +334,30 @@ footer a i:hover {
     transform: scale(1.15);
     opacity: 1;
 }
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 25s linear infinite;
+  align-items: center;
+}
+
+.slider-track img {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
