@@ -134,10 +134,7 @@ z-index: 9999;
         opacity: 1;
     }
 
-.slider-track img {
-  width: 60px;
-  height: 60px;
-}
+
 
 }
 footer a:not(i):hover {
@@ -329,6 +326,10 @@ footer a i:hover {
     max-width: 320px;
     padding: 20px;
   }
+    .slider-track img {
+  width: 60px;
+  height: 60px;
+}
 }
 .slider-container {
   width: 80%;
