@@ -330,13 +330,13 @@ footer a i:hover {
 .slider-container {
   overflow: hidden;
   position: relative;
-  width: 100%; /* Make full width */
+  width: 60%; /* Make full width */
   margin: auto;
 }
 
 .slider-track {
   display: flex;
-  gap: 2rem; /* Reduced gap for tighter fit on mobile */
+  gap: 3rem; /* Reduced gap for tighter fit on mobile */
   animation: scroll 90s linear infinite;
   align-items: center;
 }
@@ -357,6 +357,9 @@ footer a i:hover {
   .slider-track {
     gap: 1rem;
   }
+    .slider-container {
+  width: 100%; /* Make full width */
+}
 }
 
 @keyframes scroll {
