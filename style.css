@@ -325,15 +325,6 @@ footer a i:hover {
     padding: 20px;
   }
 }
-.slider img {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.8;
-    cursor: pointer;
-}
-.slider img:hover {
-    transform: scale(1.15);
-    opacity: 1;
-}
 .slider-container {
   overflow: hidden;
   position: relative;
@@ -348,8 +339,8 @@ footer a i:hover {
 }
 
 .slider-track img {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   object-fit: contain;
 }
 
