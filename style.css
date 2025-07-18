@@ -328,12 +328,12 @@ footer a i:hover {
 .slider-container {
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 
 .slider-track {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
   animation: scroll 20s linear infinite;
   align-items: center;
 }
