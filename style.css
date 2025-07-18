@@ -328,7 +328,8 @@ footer a i:hover {
 .slider-container {
   overflow: hidden;
   position: relative;
-  width: 50%;
+  width: 60%;
+
 }
 
 .slider-track {
