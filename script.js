@@ -235,3 +235,79 @@ const faqVariants = {
     "how you doing"
   ]
 };function askOpenAI(){const e=chatbotWrapper.querySelector("#question").value.trim().toLowerCase(),o=chatbotWrapper.querySelector("#response");o.innerHTML="Thinking...",o.style.display="block";let t=null;if(faqAnswers[e])t=e;else for(const o in faqVariants)if(o===e||faqVariants[o].some((o=>e.includes(o)))){t=o;break}o.innerHTML=t&&faqAnswers[t]?"<strong>Answer:</strong><br>"+faqAnswers[t]:"Sorry, I don't have an answer for that. Please try another question."}
+ (function(){
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if(isTouch) return; // keep native touch experience
+
+      document.body.classList.add('use-custom-cursor');
+
+      // Create cursor DOM nodes
+      const dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      const ring = document.createElement('div');
+      ring.className = 'cursor-ring';
+      document.body.appendChild(ring);
+      document.body.appendChild(dot);
+
+      // Track pointer
+      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+      let ringX = mouseX, ringY = mouseY; // smoothed follower
+
+      const lerp = (a,b,n)=> (1-n)*a + n*b; // linear interpolation
+
+      function raf(){
+        // Smoothly move ring toward mouse
+        ringX = lerp(ringX, mouseX, 0.16);
+        ringY = lerp(ringY, mouseY, 0.16);
+        ring.style.left = ringX + 'px';
+        ring.style.top  = ringY + 'px';
+        requestAnimationFrame(raf);
+      }
+
+      window.addEventListener('mousemove', (e)=>{
+        mouseX = e.clientX; mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top  = mouseY + 'px';
+      }, {passive:true});
+
+      // Start the animation loop
+      requestAnimationFrame(raf);
+
+      // Click pulse effect
+      window.addEventListener('mousedown', (e)=>{
+        const pulse = document.createElement('div');
+        pulse.className = 'click-pulse';
+        pulse.style.left = e.clientX + 'px';
+        pulse.style.top  = e.clientY + 'px';
+        document.body.appendChild(pulse);
+        pulse.addEventListener('animationend', ()=> pulse.remove());
+      });
+
+      // Enhance hover for interactive elements
+      const hoverSelectors = ['a','button','[role="button"]','input','select','textarea','[data-hover]'];
+      let hoverCount = 0; // support nested enters/leaves
+      function onEnter(){
+        if(++hoverCount === 1){ document.body.classList.add('cursor--hover'); }
+      }
+      function onLeave(){
+        if(hoverCount > 0 && --hoverCount === 0){ document.body.classList.remove('cursor--hover'); }
+      }
+
+      // Delegate hover detection
+      document.addEventListener('mouseover', (e)=>{
+        if(e.target.closest(hoverSelectors.join(','))) onEnter();
+      });
+      document.addEventListener('mouseout', (e)=>{
+        if(e.target.closest(hoverSelectors.join(','))) onLeave();
+      });
+
+      // Hide when leaving window (optional polish)
+      document.addEventListener('mouseleave', ()=>{
+        dot.style.opacity = '0';
+        ring.style.opacity = '0';
+      });
+      document.addEventListener('mouseenter', ()=>{
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      });
+    })();
