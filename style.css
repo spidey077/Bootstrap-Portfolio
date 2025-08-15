@@ -41,7 +41,7 @@ body {
     100% { transform: rotateX(-30deg) rotateY(30deg) translateY(-20px); }
 }
 
-.cube2 { top: 30%; left: 85%; animation-duration: 4s; animation-delay: 0.2s; }
+.cube2 { top: 37%; left: 85%; animation-duration: 4s; animation-delay: 0.2s; }
 .cube3 { top: 80%; left: 35%; animation-duration: 2.5s; animation-delay: 0.4s; }
 .cube4 { top: 25%; left: 5%; animation-duration: 3.5s; animation-delay: 0.6s; }
 :root {
