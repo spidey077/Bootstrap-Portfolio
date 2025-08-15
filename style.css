@@ -3,6 +3,62 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+    /* Hide default cursor on non-touch devices */
+    body.use-custom-cursor{ cursor:none; }
+
+    /* The primary dot that sticks to the pointer */
+    .cursor-dot{
+      position:fixed; inset:auto auto 0 0; /* for top/left moving */
+      width:14px; height:14px; border-radius:50%;
+      background:var(--blue);
+      box-shadow:0 0 8px var(--blue), 0 0 18px rgba(76,201,255,.6);
+      transform:translate(-50%, -50%);
+      pointer-events:none; z-index:9999;
+      transition:transform .08s ease, box-shadow .3s ease, opacity .25s ease;
+      mix-blend-mode:screen;
+    }
+
+    /* The trailing ring that eases toward the pointer */
+    .cursor-ring{
+      position:fixed; inset:auto auto 0 0;
+      width:40px; height:40px; border-radius:50%;
+      border:2px solid rgba(76,201,255,.5);
+      box-shadow:0 0 24px rgba(76,201,255,.28), inset 0 0 22px rgba(0,170,255,.12);
+      transform:translate(-50%, -50%);
+      pointer-events:none; z-index:9998;
+      transition:border-color .25s ease, opacity .25s ease, transform .12s ease;
+      backdrop-filter: blur(0.5px);
+    }
+
+    /* Hover state when over interactive elements */
+    .cursor--hover .cursor-dot{
+      transform:translate(-50%, -50%) scale(1.8);
+      box-shadow:0 0 12px var(--blue-2), 0 0 28px rgba(76,201,255,.8);
+    }
+    .cursor--hover .cursor-ring{
+      transform:translate(-50%, -50%) scale(1.12);
+      border-color:rgba(76,201,255,.85);
+      box-shadow:0 0 36px rgba(76,201,255,.45), inset 0 0 28px rgba(0,170,255,.2);
+    }
+
+    /* Click pulse */
+    .click-pulse{
+      position:fixed; width:10px; height:10px; border-radius:50%;
+      left:0; top:0; transform:translate(-50%, -50%);
+      pointer-events:none; z-index:9997;
+      background: radial-gradient(circle, rgba(76,201,255,.75) 0%, rgba(76,201,255,.35) 35%, rgba(76,201,255,0) 70%);
+      animation:pulse .6s ease-out forwards;
+    }
+    @keyframes pulse{
+      from{ opacity:1; width:10px; height:10px; }
+      to{ opacity:0; width:120px; height:120px; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .cursor-ring{ display:none; }
+      .cursor-dot{ transition:none; }
+    }
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
 }
