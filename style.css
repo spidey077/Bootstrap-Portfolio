@@ -43,7 +43,7 @@ body {
 
 .cube2 { top: 30%; left: 85%; animation-duration: 4s; animation-delay: 0.2s; }
 .cube3 { top: 80%; left: 10%; animation-duration: 2.5s; animation-delay: 0.4s; }
-.cube4 { top: 75%; left: 60%; animation-duration: 3.5s; animation-delay: 0.6s; }
+.cube4 { top: 25%; left: 40%; animation-duration: 3.5s; animation-delay: 0.6s; }
 :root {
   --blue: #003d80;   /* rich medium-dark blue */
   --blue-2: #00aaff; /* electric blue glow */
