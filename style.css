@@ -3,10 +3,11 @@ body {
     
   font-family: 'Roboto', sans-serif;
 }
- :root {
-  --blue: #001f4d;   /* deep navy core for contrast */
-  --blue-2: #00aaff; /* electric blue glow for style */
+:root {
+  --blue: #003d80;   /* rich medium-dark blue */
+  --blue-2: #00aaff; /* electric blue glow */
 }
+
 
 body.use-custom-cursor {
   cursor: none;
