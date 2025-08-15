@@ -1,3 +1,7 @@
+:root{
+      --blue:#00aaff;
+      --blue-2:#4cc9ff;
+}
 body {
     
   font-family: 'Roboto', sans-serif;
