@@ -26,44 +26,13 @@ body {
     border: 1px solid white;
     opacity: 0.8;
 }
-
-.front  { 
-  transform: translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-.back   { 
-  transform: rotateY(180deg) translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-.left   { 
-  transform: rotateY(-90deg) translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-.right  { 
-  transform: rotateY(90deg) translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-.top    { 
-  transform: rotateX(90deg) translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-.bottom { 
-  transform: rotateX(-90deg) translateZ(40px); 
-  background: transparent; 
-  border: 2px solid black; 
-}
-
-/* Float animation */
+/* Different colored faces */
+.front  { transform: translateZ(40px); background: rgb(206, 44, 255); }
+.back   { transform: rotateY(180deg) translateZ(40px); background: rgb(255, 44, 44);}
+.left   { transform: rotateY(-90deg) translateZ(40px); background: rgb(10, 255, 141);}
+.right  { transform: rotateY(90deg) translateZ(40px); background: rgb(44, 255, 255);}
+.top    { transform: rotateX(90deg) translateZ(40px); background: rgb(255, 238, 0);}
+.bottom { transform: rotateX(-90deg) translateZ(40px); background: rgb(255, 128, 0);}
 @keyframes floatCube {
     0% { transform: rotateX(-30deg) rotateY(30deg) translateY(0); }
     100% { transform: rotateX(-30deg) rotateY(30deg) translateY(-20px); }
