@@ -1,6 +1,6 @@
 :root{
-      --blue:#00aaff;
-      --blue-2:#4cc9ff;
+     --blue:#0077cc; /* darker blue for visibility */
+--blue-2:#00bfff;
 }
 body {
     
