@@ -411,6 +411,9 @@ footer a i:hover {
   transition: opacity 0.6s ease-in-out;
 }
 @media (max-width: 600px) {
+    .cube-container {
+        display: none;
+    }
   #chatbot-wrapper {
     bottom: 20px;
     right: 20px;
