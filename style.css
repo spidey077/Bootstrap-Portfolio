@@ -8,17 +8,14 @@ body {
     width: 80px;
     height: 80px;
 }
-
-/* 3D Cube */
 .cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: floatCube 3s ease-in-out infinite alternate;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg) rotateY(30deg) translateY(0);
+  animation: floatCube 3s ease-in-out infinite alternate;
 }
-
-/* Cube faces */
 .face {
     position: absolute;
     width: 80px;
