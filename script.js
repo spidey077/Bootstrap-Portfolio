@@ -311,10 +311,35 @@ const faqVariants = {
         ring.style.opacity = '1';
       });
     })();
-const cubes = document.querySelectorAll(".cube");
-    cubes.forEach(cube => {
-      let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
-      let delay = (Math.random() * 2).toFixed(2) + "s";
-      cube.style.animationDuration = duration;
-      cube.style.animationDelay = delay;
+  const cubes = document.querySelectorAll(".cube");
+
+  cubes.forEach(cube => {
+let size = Math.floor(Math.random() * 11) + 40; // 40–50 px
+
+
+    // Apply size to container
+    cube.parentElement.style.width = size + "px";
+    cube.parentElement.style.height = size + "px";
+
+    // Apply size to faces
+    cube.querySelectorAll(".face").forEach(face => {
+      face.style.width = size + "px";
+      face.style.height = size + "px";
     });
+
+    // Update face transforms (half of size = depth)
+    let half = size / 2;
+    cube.querySelector(".front").style.transform  = `translateZ(${half}px)`;
+    cube.querySelector(".back").style.transform   = `rotateY(180deg) translateZ(${half}px)`;
+    cube.querySelector(".left").style.transform   = `rotateY(-90deg) translateZ(${half}px)`;
+    cube.querySelector(".right").style.transform  = `rotateY(90deg) translateZ(${half}px)`;
+    cube.querySelector(".top").style.transform    = `rotateX(90deg) translateZ(${half}px)`;
+    cube.querySelector(".bottom").style.transform = `rotateX(-90deg) translateZ(${half}px)`;
+
+    // Random animation timings
+    let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
+    let delay = (Math.random() * 2).toFixed(2) + "s";
+    cube.style.animationDuration = duration;
+    cube.style.animationDelay = delay;
+  });
+ 
