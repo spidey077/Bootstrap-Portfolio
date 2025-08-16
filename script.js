@@ -311,3 +311,10 @@ const faqVariants = {
         ring.style.opacity = '1';
       });
     })();
+const cubes = document.querySelectorAll(".cube");
+    cubes.forEach(cube => {
+      let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
+      let delay = (Math.random() * 2).toFixed(2) + "s";
+      cube.style.animationDuration = duration;
+      cube.style.animationDelay = delay;
+    });
