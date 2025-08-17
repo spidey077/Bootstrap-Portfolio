@@ -58,7 +58,9 @@ body.use-custom-cursor {
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
-  transition: opacity 0.25s ease;
+ transition: opacity 0.25s ease, visibility 0.25s ease;
+  opacity: 1;
+  visibility: visible;
 }
 
 .cursor-ring {
@@ -76,6 +78,7 @@ body.use-custom-cursor {
 
 .cursor--hover .cursor-dot {
   display: none;
+    visibility: hidden;
 }
 
 .cursor--hover .cursor-ring {
