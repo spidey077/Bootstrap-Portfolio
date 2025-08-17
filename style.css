@@ -75,7 +75,7 @@ body.use-custom-cursor {
 }
 
 .cursor--hover .cursor-dot {
-  opacity:0;
+  display: none;
 }
 
 .cursor--hover .cursor-ring {
