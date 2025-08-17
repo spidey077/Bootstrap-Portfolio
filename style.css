@@ -58,7 +58,7 @@ body.use-custom-cursor {
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.08s ease, box-shadow 0.3s ease, opacity 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .cursor-ring {
@@ -71,12 +71,11 @@ body.use-custom-cursor {
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9998;
-  transition: border-color 0.25s ease, opacity 0.25s ease, transform 0.12s ease;
+  transition: border-color 0.25s ease,opacity 0.25s ease, transform 0.12s ease;
 }
 
 .cursor--hover .cursor-dot {
-  transform: translate(-50%, -50%) scale(2.2); /* bigger hover dot */
-  box-shadow: 0 0 14px var(--blue-2), 0 0 34px var(--blue-2);
+  opacity:0;
 }
 
 .cursor--hover .cursor-ring {
