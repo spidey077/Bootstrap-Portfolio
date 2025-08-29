@@ -439,7 +439,7 @@ footer a i:hover {
 .slider-container {
   overflow: hidden;
   position: relative;
-  width: 60%; /* Make full width */
+  width: 70%; /* Make full width */
   margin: auto;
 }
 
