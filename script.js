@@ -237,11 +237,10 @@ const faqVariants = {
 };function askOpenAI(){const e=chatbotWrapper.querySelector("#question").value.trim().toLowerCase(),o=chatbotWrapper.querySelector("#response");o.innerHTML="Thinking...",o.style.display="block";let t=null;if(faqAnswers[e])t=e;else for(const o in faqVariants)if(o===e||faqVariants[o].some((o=>e.includes(o)))){t=o;break}o.innerHTML=t&&faqAnswers[t]?"<strong>Answer:</strong><br>"+faqAnswers[t]:"Sorry, I don't have an answer for that. Please try another question."}
  (function(){
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      if(isTouch) return; // keep native touch experience
+      if(isTouch) return; 
 
       document.body.classList.add('use-custom-cursor');
 
-      // Create cursor DOM nodes
       const dot = document.createElement('div');
       dot.className = 'cursor-dot';
       const ring = document.createElement('div');
@@ -249,14 +248,13 @@ const faqVariants = {
       document.body.appendChild(ring);
       document.body.appendChild(dot);
 
-      // Track pointer
-      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
-      let ringX = mouseX, ringY = mouseY; // smoothed follower
 
-      const lerp = (a,b,n)=> (1-n)*a + n*b; // linear interpolation
+      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+      let ringX = mouseX, ringY = mouseY;
+
+      const lerp = (a,b,n)=> (1-n)*a + n*b; 
 
       function raf(){
-        // Smoothly move ring toward mouse
         ringX = lerp(ringX, mouseX, 0.16);
         ringY = lerp(ringY, mouseY, 0.16);
         ring.style.left = ringX + 'px';
@@ -270,10 +268,10 @@ const faqVariants = {
         dot.style.top  = mouseY + 'px';
       }, {passive:true});
 
-      // Start the animation loop
+
       requestAnimationFrame(raf);
 
-      // Click pulse effect
+  
       window.addEventListener('mousedown', (e)=>{
         const pulse = document.createElement('div');
         pulse.className = 'click-pulse';
@@ -283,25 +281,20 @@ const faqVariants = {
         pulse.addEventListener('animationend', ()=> pulse.remove());
       });
 
-      // Enhance hover for interactive elements
       const hoverSelectors = ['a','button','[role="button"]','input','select','textarea','[data-hover]'];
-      let hoverCount = 0; // support nested enters/leaves
+      let hoverCount = 0; 
       function onEnter(){
         if(++hoverCount === 1){ document.body.classList.add('cursor--hover'); }
       }
       function onLeave(){
         if(hoverCount > 0 && --hoverCount === 0){ document.body.classList.remove('cursor--hover'); }
       }
-
-      // Delegate hover detection
       document.addEventListener('mouseover', (e)=>{
         if(e.target.closest(hoverSelectors.join(','))) onEnter();
       });
       document.addEventListener('mouseout', (e)=>{
         if(e.target.closest(hoverSelectors.join(','))) onLeave();
       });
-
-      // Hide when leaving window (optional polish)
       document.addEventListener('mouseleave', ()=>{
         dot.style.opacity = '0';
         ring.style.opacity = '0';
@@ -314,20 +307,16 @@ const faqVariants = {
   const cubes = document.querySelectorAll(".cube");
 
   cubes.forEach(cube => {
-let size = Math.floor(Math.random() * 11) + 40; // 40–50 px
+let size = Math.floor(Math.random() * 11) + 40; 
 
-
-    // Apply size to container
     cube.parentElement.style.width = size + "px";
     cube.parentElement.style.height = size + "px";
 
-    // Apply size to faces
     cube.querySelectorAll(".face").forEach(face => {
       face.style.width = size + "px";
       face.style.height = size + "px";
     });
 
-    // Update face transforms (half of size = depth)
     let half = size / 2;
     cube.querySelector(".front").style.transform  = `translateZ(${half}px)`;
     cube.querySelector(".back").style.transform   = `rotateY(180deg) translateZ(${half}px)`;
@@ -336,7 +325,6 @@ let size = Math.floor(Math.random() * 11) + 40; // 40–50 px
     cube.querySelector(".top").style.transform    = `rotateX(90deg) translateZ(${half}px)`;
     cube.querySelector(".bottom").style.transform = `rotateX(-90deg) translateZ(${half}px)`;
 
-    // Random animation timings
     let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
     let delay = (Math.random() * 2).toFixed(2) + "s";
     cube.style.animationDuration = duration;
