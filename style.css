@@ -44,48 +44,6 @@ body {
 }
 
 
-body.use-custom-cursor {
-  cursor: none;
-}
-
-.cursor-dot {
-  position: fixed;
-  width: 20px; /* bigger dot */
-  height: 20px;
-  border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue-2);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
- transition: opacity 0.25s ease, visibility 0.25s ease;
-  opacity: 1;
-  visibility: visible;
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 60px; /* bigger ring */
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid var(--blue-2);
-  box-shadow: 0 0 30px rgba(0, 170, 255, 0.5);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9998;
-  transition: border-color 0.25s ease,opacity 0.25s ease, transform 0.12s ease;
-}
-
-.cursor--hover .cursor-dot {
-  display: none;
-    visibility: hidden;
-}
-
-.cursor--hover .cursor-ring {
-  transform: translate(-50%, -50%) scale(1.15); /* slightly bigger ring hover */
-  border-color: var(--blue);
-}
-
 .click-pulse {
   position: fixed;
   border-radius: 50%;
