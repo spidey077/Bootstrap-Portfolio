@@ -1,4 +1,4 @@
-window.addEventListener("scroll",function(){let e=document.querySelector(".navbar");console.log(e),e&&(window.scrollY>50?e.classList.add("scrolled"):e.classList.remove("scrolled"))}),document.addEventListener("DOMContentLoaded",function(){let e=document.getElementById("loading-screen"),t=document.getElementById("content");e.classList.add("hidden"),t.classList.add("show"),setTimeout(()=>{e.style.display="none"},3e3)}),document.addEventListener("DOMContentLoaded",function(){let e=document.querySelectorAll(".reveal");function t(){e.forEach(e=>{let t=e.getBoundingClientRect().top,n=window.innerHeight;t<n-80?e.classList.add("active"):e.classList.remove("active")})}window.addEventListener("scroll",t),t()});const cursor=document.querySelector(".cursor");document.addEventListener("mousemove",e=>{cursor.style.left=`${e.clientX}px`,cursor.style.top=`${e.clientY}px`});const hoverElements=document.querySelectorAll(".hover-target");hoverElements.forEach(e=>{e.addEventListener("mouseover",()=>{cursor.style.width="130px",cursor.style.height="130px",cursor.style.backgroundColor="rgba(47, 213, 255, 0.69)"}),e.addEventListener("mouseleave",()=>{cursor.style.width="10px",cursor.style.height="10px",cursor.style.backgroundColor="transparent"})});const letters=document.querySelectorAll(".animated-title span");let index=0;function animateLetters(){letters.forEach(e=>e.classList.remove("active")),letters[index].classList.add("active"),index=(index+1)%letters.length,setTimeout(animateLetters,1e3)}animateLetters(),document.getElementById("lottie-animation1").addEventListener("click",function(){let e=document.getElementById("about");window.scrollTo({top:e.offsetTop-90,behavior:"smooth"})}),document.getElementById("lottie-animation").addEventListener("click",function(){window.location.href="#home"});const chatbotWrapper=document.getElementById("chatbot-wrapper"),chatbot=chatbotWrapper.querySelector("#chatbotContainer"),chatbotBtn=chatbotWrapper.querySelector(".chatbot-button");function toggleChatbot(){chatbot.classList.toggle("open"),chatbotBtn.classList.toggle("hidden",chatbot.classList.contains("open"))}document.addEventListener("click",(function(e){!chatbot.classList.contains("open")||chatbot.contains(e.target)||chatbotBtn.contains(e.target)||(chatbot.classList.remove("open"),chatbotBtn.classList.remove("hidden"))}));const faqAnswers = {
+window.addEventListener("scroll", function () { let e = document.querySelector(".navbar"); console.log(e), e && (window.scrollY > 50 ? e.classList.add("scrolled") : e.classList.remove("scrolled")) }), document.addEventListener("DOMContentLoaded", function () { let e = document.getElementById("loading-screen"), t = document.getElementById("content"); e.classList.add("hidden"), t.classList.add("show"), setTimeout(() => { e.style.display = "none" }, 3e3) }), document.addEventListener("DOMContentLoaded", function () { let e = document.querySelectorAll(".reveal"); function t() { e.forEach(e => { let t = e.getBoundingClientRect().top, n = window.innerHeight; t < n - 80 ? e.classList.add("active") : e.classList.remove("active") }) } window.addEventListener("scroll", t), t() }); const cursor = document.querySelector(".cursor"); document.addEventListener("mousemove", e => { cursor.style.left = `${e.clientX}px`, cursor.style.top = `${e.clientY}px` }); const hoverElements = document.querySelectorAll(".hover-target"); hoverElements.forEach(e => { e.addEventListener("mouseover", () => { cursor.style.width = "130px", cursor.style.height = "130px", cursor.style.backgroundColor = "rgba(47, 213, 255, 0.69)" }), e.addEventListener("mouseleave", () => { cursor.style.width = "10px", cursor.style.height = "10px", cursor.style.backgroundColor = "transparent" }) }); const letters = document.querySelectorAll(".animated-title span"); let index = 0; function animateLetters() { letters.forEach(e => e.classList.remove("active")), letters[index].classList.add("active"), index = (index + 1) % letters.length, setTimeout(animateLetters, 1e3) } animateLetters(), document.getElementById("lottie-animation1").addEventListener("click", function () { let e = document.getElementById("about"); window.scrollTo({ top: e.offsetTop - 90, behavior: "smooth" }) }), document.getElementById("lottie-animation").addEventListener("click", function () { window.location.href = "#home" }); const chatbotWrapper = document.getElementById("chatbot-wrapper"), chatbot = chatbotWrapper.querySelector("#chatbotContainer"), chatbotBtn = chatbotWrapper.querySelector(".chatbot-button"); function toggleChatbot() { chatbot.classList.toggle("open"), chatbotBtn.classList.toggle("hidden", chatbot.classList.contains("open")) } document.addEventListener("click", (function (e) { !chatbot.classList.contains("open") || chatbot.contains(e.target) || chatbotBtn.contains(e.target) || (chatbot.classList.remove("open"), chatbotBtn.classList.remove("hidden")) })); const faqAnswers = {
   "what services do you offer": "I offer front-end web development, responsive website creation, and portfolio design and FAQ chatbot website integration. I also provide UI design services using tools like Figma, Canva, and Photoshop.",
   "how can i contact you": "You can contact me through the Contact section on my website or email me directly at imdadullahchishti@gmail.com.",
   "do you create websites": "Yes, I specialize in creating responsive and modern websites using HTML, CSS, JavaScript, and frameworks like Bootstrap and Tailwind CSS.",
@@ -234,100 +234,187 @@ const faqVariants = {
     "how r u",
     "how you doing"
   ]
-};function askOpenAI(){const e=chatbotWrapper.querySelector("#question").value.trim().toLowerCase(),o=chatbotWrapper.querySelector("#response");o.innerHTML="Thinking...",o.style.display="block";let t=null;if(faqAnswers[e])t=e;else for(const o in faqVariants)if(o===e||faqVariants[o].some((o=>e.includes(o)))){t=o;break}o.innerHTML=t&&faqAnswers[t]?"<strong>Answer:</strong><br>"+faqAnswers[t]:"Sorry, I don't have an answer for that. Please try another question."}
- (function(){
-      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      if(isTouch) return; 
+};// Chatbot Logic
+function askOpenAI() {
+  const inputField = chatbotWrapper.querySelector("#question");
+  const question = inputField.value.trim().toLowerCase();
+  const chatMessages = chatbotWrapper.querySelector("#chatMessages");
 
-      document.body.classList.add('use-custom-cursor');
+  if (!question) return;
 
-      const dot = document.createElement('div');
-      dot.className = 'cursor-dot';
-      const ring = document.createElement('div');
-      ring.className = 'cursor-ring';
-      document.body.appendChild(ring);
-      document.body.appendChild(dot);
+  // Append User Message
+  appendMessage(inputField.value, 'user-message');
+  inputField.value = "";
 
+  // Simulate Typing
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'message bot-message text-muted fst-italic';
+  typingIndicator.id = 'typingIndicator';
+  typingIndicator.innerHTML = '<i class="fas fa-ellipsis-h"></i> Typing...';
+  chatMessages.appendChild(typingIndicator);
+  scrollToBottom();
 
-      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
-      let ringX = mouseX, ringY = mouseY;
-
-      const lerp = (a,b,n)=> (1-n)*a + n*b; 
-
-      function raf(){
-        ringX = lerp(ringX, mouseX, 0.16);
-        ringY = lerp(ringY, mouseY, 0.16);
-        ring.style.left = ringX + 'px';
-        ring.style.top  = ringY + 'px';
-        requestAnimationFrame(raf);
+  // Find Answer
+  let answer = null;
+  if (faqAnswers[question]) {
+    answer = faqAnswers[question];
+  } else {
+    for (const key in faqVariants) {
+      if (key === question || faqVariants[key].some(variant => question.includes(variant))) {
+        answer = faqAnswers[key];
+        break;
       }
+    }
+  }
 
-      window.addEventListener('mousemove', (e)=>{
-        mouseX = e.clientX; mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top  = mouseY + 'px';
-      }, {passive:true});
+  // Delay response slightly for realism
+  setTimeout(() => {
+    // Remove typing indicator
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+
+    // Append Bot Response
+    const responseText = answer || "Sorry, I don't have an answer for that. Please try another question.";
+    appendMessage(responseText, 'bot-message');
+  }, 600);
+}
+
+function appendMessage(text, className) {
+  const chatMessages = chatbotWrapper.querySelector("#chatMessages");
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${className}`;
+  messageDiv.innerHTML = text; // using innerHTML to allow basic formatting if needed
+  chatMessages.appendChild(messageDiv);
+  scrollToBottom();
+}
+
+function scrollToBottom() {
+  const chatMessages = chatbotWrapper.querySelector("#chatMessages");
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function handleEnter(event) {
+  if (event.key === 'Enter') {
+    askOpenAI();
+  }
+}
+(function () {
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouch) return;
+
+  document.body.classList.add('use-custom-cursor');
+
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.appendChild(ring);
+  document.body.appendChild(dot);
 
 
-      requestAnimationFrame(raf);
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let ringX = mouseX, ringY = mouseY;
 
-  
-      window.addEventListener('mousedown', (e)=>{
-        const pulse = document.createElement('div');
-        pulse.className = 'click-pulse';
-        pulse.style.left = e.clientX + 'px';
-        pulse.style.top  = e.clientY + 'px';
-        document.body.appendChild(pulse);
-        pulse.addEventListener('animationend', ()=> pulse.remove());
-      });
+  const lerp = (a, b, n) => (1 - n) * a + n * b;
 
-      const hoverSelectors = ['a','button','[role="button"]','input','select','textarea','[data-hover]'];
-      let hoverCount = 0; 
-      function onEnter(){
-        if(++hoverCount === 1){ document.body.classList.add('cursor--hover'); }
-      }
-      function onLeave(){
-        if(hoverCount > 0 && --hoverCount === 0){ document.body.classList.remove('cursor--hover'); }
-      }
-      document.addEventListener('mouseover', (e)=>{
-        if(e.target.closest(hoverSelectors.join(','))) onEnter();
-      });
-      document.addEventListener('mouseout', (e)=>{
-        if(e.target.closest(hoverSelectors.join(','))) onLeave();
-      });
-      document.addEventListener('mouseleave', ()=>{
-        dot.style.opacity = '0';
-        ring.style.opacity = '0';
-      });
-      document.addEventListener('mouseenter', ()=>{
-        dot.style.opacity = '1';
-        ring.style.opacity = '1';
-      });
-    })();
-  const cubes = document.querySelectorAll(".cube");
+  function raf() {
+    ringX = lerp(ringX, mouseX, 0.16);
+    ringY = lerp(ringY, mouseY, 0.16);
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(raf);
+  }
 
-  cubes.forEach(cube => {
-let size = Math.floor(Math.random() * 11) + 40; 
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  }, { passive: true });
 
-    cube.parentElement.style.width = size + "px";
-    cube.parentElement.style.height = size + "px";
 
-    cube.querySelectorAll(".face").forEach(face => {
-      face.style.width = size + "px";
-      face.style.height = size + "px";
-    });
+  requestAnimationFrame(raf);
 
-    let half = size / 2;
-    cube.querySelector(".front").style.transform  = `translateZ(${half}px)`;
-    cube.querySelector(".back").style.transform   = `rotateY(180deg) translateZ(${half}px)`;
-    cube.querySelector(".left").style.transform   = `rotateY(-90deg) translateZ(${half}px)`;
-    cube.querySelector(".right").style.transform  = `rotateY(90deg) translateZ(${half}px)`;
-    cube.querySelector(".top").style.transform    = `rotateX(90deg) translateZ(${half}px)`;
-    cube.querySelector(".bottom").style.transform = `rotateX(-90deg) translateZ(${half}px)`;
 
-    let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
-    let delay = (Math.random() * 2).toFixed(2) + "s";
-    cube.style.animationDuration = duration;
-    cube.style.animationDelay = delay;
+  window.addEventListener('mousedown', (e) => {
+    const pulse = document.createElement('div');
+    pulse.className = 'click-pulse';
+    pulse.style.left = e.clientX + 'px';
+    pulse.style.top = e.clientY + 'px';
+    document.body.appendChild(pulse);
+    pulse.addEventListener('animationend', () => pulse.remove());
   });
- 
+
+  const hoverSelectors = ['a', 'button', '[role="button"]', 'input', 'select', 'textarea', '[data-hover]'];
+  let hoverCount = 0;
+  function onEnter() {
+    if (++hoverCount === 1) { document.body.classList.add('cursor--hover'); }
+  }
+  function onLeave() {
+    if (hoverCount > 0 && --hoverCount === 0) { document.body.classList.remove('cursor--hover'); }
+  }
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverSelectors.join(','))) onEnter();
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverSelectors.join(','))) onLeave();
+  });
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+})();
+const cubes = document.querySelectorAll(".cube");
+
+cubes.forEach(cube => {
+  let size = Math.floor(Math.random() * 11) + 40;
+
+  cube.parentElement.style.width = size + "px";
+  cube.parentElement.style.height = size + "px";
+
+  cube.querySelectorAll(".face").forEach(face => {
+    face.style.width = size + "px";
+    face.style.height = size + "px";
+  });
+
+  let half = size / 2;
+  cube.querySelector(".front").style.transform = `translateZ(${half}px)`;
+  cube.querySelector(".back").style.transform = `rotateY(180deg) translateZ(${half}px)`;
+  cube.querySelector(".left").style.transform = `rotateY(-90deg) translateZ(${half}px)`;
+  cube.querySelector(".right").style.transform = `rotateY(90deg) translateZ(${half}px)`;
+  cube.querySelector(".top").style.transform = `rotateX(90deg) translateZ(${half}px)`;
+  cube.querySelector(".bottom").style.transform = `rotateX(-90deg) translateZ(${half}px)`;
+
+  let duration = (Math.random() * 3 + 2).toFixed(2) + "s";
+  let delay = (Math.random() * 2).toFixed(2) + "s";
+  cube.style.animationDuration = duration;
+  cube.style.animationDelay = delay;
+});
+
+// Hamburger Menu Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  // Close on click outside
+  document.addEventListener("click", function (event) {
+    if (navbarCollapse.classList.contains("show") &&
+      !navbarCollapse.contains(event.target) &&
+      !navbarToggler.contains(event.target)) {
+      new bootstrap.Collapse(navbarCollapse).hide();
+    }
+  });
+
+  // Close on link click
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (navbarCollapse.classList.contains("show")) {
+        new bootstrap.Collapse(navbarCollapse).hide();
+      }
+    });
+  });
+});
