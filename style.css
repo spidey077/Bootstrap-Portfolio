@@ -570,11 +570,11 @@ footer a i:hover {
   }
 
   #chatbot-wrapper .container {
-    width: 90vw;
-    /* Take most of screen width */
-    height: 70vh;
-    /* Taller on mobile */
-    max-width: 350px;
+    width: 85vw;
+    /* Slightly reduced width */
+    height: 50vh;
+    /* reduced height from 70vh */
+    max-width: 320px;
     bottom: 80px;
     right: 0;
   }
