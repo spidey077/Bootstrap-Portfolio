@@ -216,28 +216,214 @@ h3 {
 
 #loading-screen {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  background: rgb(144, 235, 235);
+  z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 0.8s ease-in-out, visibility 0.9s ease-in-out;
+  overflow: hidden;
 }
 
-#loading-screen.hidden {
+.loader-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #111;
+  transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.left-panel {
+  left: 0;
+  border-right: 1px solid rgba(144, 235, 235, 0.1);
+}
+
+.right-panel {
+  right: 0;
+  border-left: 1px solid rgba(144, 235, 235, 0.1);
+}
+
+#loading-screen.hidden .left-panel {
+  transform: translateX(-100%);
+}
+
+#loading-screen.hidden .right-panel {
+  transform: translateX(100%);
+}
+
+.loader-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+#loading-screen.hidden .loader-content {
   opacity: 0;
-  visibility: hidden;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+/* 3D Cube Loader */
+.loader-cube-wrapper {
+  perspective: 1000px;
+  width: 60px;
+  height: 60px;
+}
+
+.loader-cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: loaderRotate 3s linear infinite;
+}
+
+.cube-face {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #90EBEB;
+  background: rgba(144, 235, 235, 0.1);
+  box-shadow: 0 0 20px rgba(144, 235, 235, 0.3);
+}
+
+.cube-front {
+  transform: rotateY(0deg) translateZ(30px);
+}
+
+.cube-back {
+  transform: rotateY(180deg) translateZ(30px);
+}
+
+.cube-left {
+  transform: rotateY(-90deg) translateZ(30px);
+}
+
+.cube-right {
+  transform: rotateY(90deg) translateZ(30px);
+}
+
+.cube-top {
+  transform: rotateX(90deg) translateZ(30px);
+}
+
+.cube-bottom {
+  transform: rotateX(-90deg) translateZ(30px);
+}
+
+@keyframes loaderRotate {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.loader-text {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.loader-progress-container {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #90EBEB;
+  box-shadow: 0 0 15px #90EBEB;
+  animation: progressLoad 2.5s ease-in-out forwards;
+}
+
+@keyframes progressLoad {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 #content {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  /* Keep at 1, handle entrance on children */
 }
 
-#content.show {
+/* Home Entrance Animations */
+#home .animated-title,
+#home .lead,
+#home .d-flex,
+#home .cube-container {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+#home.hero-revealed .animated-title {
   opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.1s;
+}
+
+#home.hero-revealed .lead {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.3s;
+}
+
+#home.hero-revealed .d-flex {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.5s;
+}
+
+#home.hero-revealed .cube-container {
+  opacity: 1;
+  transform: translate(0) scale(1);
+  transition-delay: 0.7s;
 }
 
 .btn-dark {
