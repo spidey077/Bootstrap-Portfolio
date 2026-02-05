@@ -489,15 +489,111 @@ h3 {
 }
 
 footer a:not(i):hover {
-  color: #007bff;
-  text-decoration: underline;
+  color: #90EBEB;
   transition: color 0.3s ease-in-out;
 }
 
 footer a i:hover {
-  color: #000000;
+  color: #90EBEB;
   transform: scale(1.2);
   transition: all 0.3s ease-in-out;
+}
+
+/* Modern Footer Styles */
+.modern-footer {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 100px 0 60px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #eee;
+}
+
+.footer-logo svg {
+  color: #000000;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.footer-logo:hover svg {
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0 0 20px rgba(144, 235, 235, 0.4));
+}
+
+.brand-tagline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 400px;
+  margin: 0 auto;
+  letter-spacing: 1px;
+}
+
+.footer-links-horizontal {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links-horizontal li a {
+  color: #444;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 1rem;
+}
+
+.footer-links-horizontal li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #111;
+  transition: width 0.3s ease;
+}
+
+.footer-links-horizontal li a:hover {
+  color: #000;
+}
+
+.footer-links-horizontal li a:hover::after {
+  width: 100%;
+}
+
+.social-pill {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+}
+
+.social-icon {
+  color: #000000;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #90EBEB;
+  transform: translateY(-5px);
+}
+
+.copyright-bar {
+  border-color: rgba(0, 0, 0, 0.05) !important;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.legal-links a {
+  color: #444;
+  text-decoration: none;
+}
+
+.legal-links a:hover {
+  color: #90EBEB;
 }
 
 .animated-title span {
