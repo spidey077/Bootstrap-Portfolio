@@ -588,22 +588,29 @@ footer a i:hover {
   overflow: hidden;
   position: relative;
   width: 70%;
-  /* Make full width */
   margin: auto;
+  /* Add fade effect safely */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .slider-track {
   display: flex;
-  gap: 3rem;
-  /* Reduced gap for tighter fit on mobile */
+  width: max-content;
   animation: scroll 20s linear infinite;
   align-items: center;
+}
+
+.slider-track:hover {
+  animation-play-state: paused;
 }
 
 .slider-track img {
   width: 80px;
   height: 80px;
   object-fit: contain;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 /* Adjust for small devices */
@@ -615,11 +622,11 @@ footer a i:hover {
   .slider-track img {
     width: 50px;
     height: 50px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 
-  .slider-track {
-    gap: 1rem;
-  }
+  /* .slider-track gap removed since we use margin now */
 
   .slider-container {
     width: 100%;
