@@ -376,13 +376,13 @@ footer a i:hover {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
   pointer-events: auto;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   animation: floatButton 3s ease-in-out infinite;
 }
 
 #chatbot-wrapper .chatbot-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(0, 114, 255, 0.6);
 }
 
 #chatbot-wrapper .chatbot-button.hidden {
@@ -408,29 +408,29 @@ footer a i:hover {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   width: 350px;
-  height: 450px;
-  /* Reduced height to fit better */
+  height: 480px;
   position: absolute;
-  bottom: 75px;
-  /* Moved down slightly */
+  bottom: 80px;
   right: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(20px) scale(0.9);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: scale(0.4) translateY(40px) rotate(5deg);
+  transform-origin: bottom right;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 10000;
 }
 
 #chatbot-wrapper .container.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
+  transform: scale(1) translateY(0) rotate(0deg);
 }
 
 /* Header */
@@ -555,6 +555,33 @@ footer a i:hover {
   background: #0056b3;
 }
 
+/* Initial state for staggered animations */
+.chat-header,
+.chat-messages,
+.chat-input-area {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#chatbot-wrapper .container.open .chat-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+#chatbot-wrapper .container.open .chat-messages {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+#chatbot-wrapper .container.open .chat-input-area {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
 /* Media Queries */
 @media (max-width: 600px) {
   .cube-container {
@@ -566,17 +593,15 @@ footer a i:hover {
     right: 20px;
     align-items: flex-end;
     pointer-events: none;
-    /* Let clicks pass through empty space */
   }
 
   #chatbot-wrapper .container {
     width: 85vw;
-    /* Slightly reduced width */
-    height: 50vh;
-    /* reduced height from 70vh */
+    height: 60vh;
     max-width: 320px;
     bottom: 80px;
     right: 0;
+    transform-origin: bottom right;
   }
 
   #chatbot-wrapper .container.open {
