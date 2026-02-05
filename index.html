@@ -33,9 +33,26 @@
 <body>
     <div class="cursor"></div>
     <div id="loading-screen">
-        <div class="text-center">
-            <div class="spinner-border " role="status" style="width: 4rem; height: 4rem;"></div>
+        <div class="loader-content">
+            <div class="loader-cube-wrapper">
+                <div class="loader-cube">
+                    <div class="cube-face cube-front"></div>
+                    <div class="cube-face cube-back"></div>
+                    <div class="cube-face cube-left"></div>
+                    <div class="cube-face cube-right"></div>
+                    <div class="cube-face cube-top"></div>
+                    <div class="cube-face cube-bottom"></div>
+                </div>
+            </div>
+            <div class="loader-text-wrapper">
+                <div class="loader-text">Loading Portfolio</div>
+            </div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
         </div>
+        <div class="loader-panel left-panel"></div>
+        <div class="loader-panel right-panel"></div>
     </div>
     <div id="content">
         <nav class="navbar navbar-expand-md fixed-top" style="background-color: rgb(144, 235, 235); padding: 20px;">
