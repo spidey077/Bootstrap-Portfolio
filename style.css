@@ -80,31 +80,6 @@ body {
   }
 }
 
-#home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 80px;
-  /* Space for navbar */
-  position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  #home {
-    min-height: 85vh;
-    padding-top: 0;
-    /* Remove padding to allow centering */
-    align-items: center;
-  }
-
-  #home header {
-    margin-top: -10vh;
-    /* Visually shift up slightly as requested */
-  }
-}
-
 .cube2 {
   top: 53%;
   left: 84%;
