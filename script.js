@@ -1,4 +1,4 @@
-// Initialize Lenis Smooth Scroll
+
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -11,7 +11,6 @@ const lenis = new Lenis({
   infinite: false,
 });
 
-// Synchronize Lenis with GSAP ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update);
 
 gsap.ticker.add((time) => {
@@ -24,14 +23,12 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
   let loader = document.getElementById("loading-screen"),
     home = document.getElementById("home");
 
-  // Minimum time the loader must stay visible for the "jaw-dropping" animation
   const minWait = 2500;
 
   setTimeout(() => {
     // Step 1: Trigger the panel slide-out in CSS
     loader.classList.add("hidden");
 
-    // Step 2: Trigger the staggered hero entrance slightly after panels start moving
     setTimeout(() => {
       home.classList.add("hero-revealed");
     }, 300);
@@ -58,7 +55,47 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
   checkReveal();
   window.addEventListener("scroll", checkReveal);
   lenis.on('scroll', checkReveal);
-  const cursor = document.querySelector(".cursor"); document.addEventListener("mousemove", e => { cursor.style.left = `${e.clientX}px`, cursor.style.top = `${e.clientY}px` }); const hoverElements = document.querySelectorAll(".hover-target"); hoverElements.forEach(e => { e.addEventListener("mouseover", () => { cursor.style.width = "130px", cursor.style.height = "130px", cursor.style.backgroundColor = "rgba(47, 213, 255, 0.69)" }), e.addEventListener("mouseleave", () => { cursor.style.width = "10px", cursor.style.height = "10px", cursor.style.backgroundColor = "transparent" }) }); const letters = document.querySelectorAll(".animated-title span"); let index = 0; function animateLetters() { letters.forEach(e => e.classList.remove("active")), letters[index].classList.add("active"), index = (index + 1) % letters.length, setTimeout(animateLetters, 1e3) } animateLetters(), document.getElementById("lottie-animation1").addEventListener("click", function () { let e = document.getElementById("about"); window.scrollTo({ top: e.offsetTop - 90, behavior: "smooth" }) }), document.getElementById("lottie-animation").addEventListener("click", function () { window.location.href = "#home" }); const chatbotWrapper = document.getElementById("chatbot-wrapper"), chatbot = chatbotWrapper.querySelector("#chatbotContainer"), chatbotBtn = chatbotWrapper.querySelector(".chatbot-button"); function toggleChatbot() { chatbot.classList.toggle("open"), chatbotBtn.classList.toggle("hidden", chatbot.classList.contains("open")) } document.addEventListener("click", (function (e) { !chatbot.classList.contains("open") || chatbot.contains(e.target) || chatbotBtn.contains(e.target) || (chatbot.classList.remove("open"), chatbotBtn.classList.remove("hidden")) })); const faqAnswers = {
+  const letters = document.querySelectorAll(".animated-title span");
+  let index = 0;
+  function animateLetters() {
+    letters.forEach(e => e.classList.remove("active")),
+      letters[index].classList.add("active"),
+      index = (index + 1) % letters.length,
+      setTimeout(animateLetters, 1e3)
+  }
+  animateLetters();
+
+  document.getElementById("lottie-animation1").addEventListener("click", function () {
+    let e = document.getElementById("about");
+    window.scrollTo({ top: e.offsetTop - 90, behavior: "smooth" })
+  });
+
+  document.getElementById("lottie-animation").addEventListener("click", function () {
+    window.location.href = "#home"
+  });
+
+  const chatbotWrapper = document.getElementById("chatbot-wrapper");
+  const chatbotContainer = chatbotWrapper.querySelector("#chatbotContainer");
+  const chatbotBtn = chatbotWrapper.querySelector(".chatbot-button");
+  const chatbotCloseBtn = chatbotWrapper.querySelector(".btn-close");
+
+  function toggleChatbot() {
+    chatbotContainer.classList.toggle("open");
+    chatbotBtn.classList.toggle("hidden", chatbotContainer.classList.contains("open"));
+  }
+
+  chatbotBtn.addEventListener("click", toggleChatbot);
+  if (chatbotCloseBtn) chatbotCloseBtn.addEventListener("click", toggleChatbot);
+
+  document.addEventListener("click", function (e) {
+    if (chatbotContainer.classList.contains("open") &&
+      !chatbotContainer.contains(e.target) &&
+      !chatbotBtn.contains(e.target)) {
+      chatbotContainer.classList.remove("open");
+      chatbotBtn.classList.remove("hidden");
+    }
+  });
+  const faqAnswers = {
     "bot_identity": "I am a smart chatbot assistant designed to help you navigate this portfolio and learn more about Muhammad Imdadullah's work!",
     "bot_name": "I don't have a human name, but you can call me your Portfolio Assistant!",
     "owner_info": "Muhammad Imdadullah is a passionate CS student and a skilled front-end developer specializing in creating responsive, modern websites and UI designs.",
@@ -266,27 +303,25 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
   });
 
   // Hamburger Menu Logic
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbarToggler = document.querySelector(".navbar-toggler");
-    const navbarCollapse = document.querySelector(".navbar-collapse");
-    const navLinks = document.querySelectorAll(".nav-link");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navLinks = document.querySelectorAll(".nav-link");
 
-    // Close on click outside
-    document.addEventListener("click", function (event) {
-      if (navbarCollapse.classList.contains("show") &&
-        !navbarCollapse.contains(event.target) &&
-        !navbarToggler.contains(event.target)) {
+  // Close on click outside
+  document.addEventListener("click", function (event) {
+    if (navbarCollapse.classList.contains("show") &&
+      !navbarCollapse.contains(event.target) &&
+      !navbarToggler.contains(event.target)) {
+      new bootstrap.Collapse(navbarCollapse).hide();
+    }
+  });
+
+  // Close on link click
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (navbarCollapse.classList.contains("show")) {
         new bootstrap.Collapse(navbarCollapse).hide();
       }
     });
-
-    // Close on link click
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        if (navbarCollapse.classList.contains("show")) {
-          new bootstrap.Collapse(navbarCollapse).hide();
-        }
-      });
-    });
-  })();
+  });
 });
