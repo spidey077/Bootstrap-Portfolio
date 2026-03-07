@@ -1,4 +1,4 @@
-
+// Initialize Lenis Smooth Scroll
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -11,6 +11,7 @@ const lenis = new Lenis({
   infinite: false,
 });
 
+// Synchronize Lenis with GSAP ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update);
 
 gsap.ticker.add((time) => {
@@ -23,12 +24,14 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
   let loader = document.getElementById("loading-screen"),
     home = document.getElementById("home");
 
+  // Minimum time the loader must stay visible for the "jaw-dropping" animation
   const minWait = 2500;
 
   setTimeout(() => {
     // Step 1: Trigger the panel slide-out in CSS
     loader.classList.add("hidden");
 
+    // Step 2: Trigger the staggered hero entrance slightly after panels start moving
     setTimeout(() => {
       home.classList.add("hero-revealed");
     }, 300);
@@ -86,6 +89,20 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
 
   chatbotBtn.addEventListener("click", toggleChatbot);
   if (chatbotCloseBtn) chatbotCloseBtn.addEventListener("click", toggleChatbot);
+
+  // Send message on button click
+  const sendBtn = chatbotWrapper.querySelector(".send-btn");
+  if (sendBtn) sendBtn.addEventListener("click", askOpenAI);
+
+  // Send message on Enter key
+  const questionInput = chatbotWrapper.querySelector("#question");
+  if (questionInput) {
+    questionInput.addEventListener("keypress", function (event) {
+      if (event.key === 'Enter') {
+        askOpenAI();
+      }
+    });
+  }
 
   document.addEventListener("click", function (e) {
     if (chatbotContainer.classList.contains("open") &&
@@ -201,11 +218,6 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function handleEnter(event) {
-    if (event.key === 'Enter') {
-      askOpenAI();
-    }
-  }
   (function () {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouch) return;
