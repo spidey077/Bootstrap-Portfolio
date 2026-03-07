@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imdadullahbootstrap.vercel.app/sitemap.xml

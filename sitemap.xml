@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Tools -->
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/invoice-extractor.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/email-summarizer.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/pdf-summarizer.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/todo.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/email-task.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Legal pages -->
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/privacy.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://imdadullahbootstrap.vercel.app/terms.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+</urlset>
