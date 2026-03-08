@@ -29,19 +29,6 @@ html.lenis body {
   height: 80px;
 }
 
-.cursor {
-  background-color: transparent;
-  border: 2px solid rgba(110, 208, 233, 0.685);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  transition: width 0.6s ease, height 0.6s ease, background-color 0.3s ease;
-  z-index: 9999;
-}
-
 .cube {
   width: 100%;
   height: 100%;
@@ -472,19 +459,6 @@ h3 {
 .btn-lg:hover {
   transform: scale(1.05);
 
-}
-
-.cursor {
-  background-color: transparent;
-  border: 2px solid rgba(110, 208, 233, 0.685);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  transition: width 0.6s ease, height 0.6s ease, background-color 0.3s ease;
-  z-index: 9999;
 }
 
 .card {
@@ -968,5 +942,66 @@ footer a i:hover {
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Custom Cursor Styles */
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  /* Changed from transparent to white for true inversion */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  top: -100px;
+  left: -100px;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease, height 0.3s ease;
+  filter: url(#liquify);
+  /* Applied the liquify effect */
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  /* Changed to white */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  top: -100px;
+  left: -100px;
+  mix-blend-mode: difference;
+}
+
+.cursor-follower.hovering {
+  background-color: white;
+  opacity: 0.8;
+}
+
+/* Hide fallback cursor if needed */
+.use-custom-cursor {
+  cursor: none !important;
+}
+
+.use-custom-cursor a,
+.use-custom-cursor button,
+.use-custom-cursor .hover-target {
+  cursor: none !important;
+}
+
+/* Touch devices: hide custom cursor */
+@media (hover: none) and (pointer: coarse) {
+
+  .cursor-follower,
+  .cursor-dot {
+    display: none;
   }
 }
