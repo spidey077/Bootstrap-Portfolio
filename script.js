@@ -218,73 +218,75 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  // New GSAP Custom Cursor Implementation
   (function () {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouch) return;
 
     document.body.classList.add('use-custom-cursor');
 
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-follower';
     const dot = document.createElement('div');
     dot.className = 'cursor-dot';
-    const ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    document.body.appendChild(ring);
+    document.body.appendChild(cursor);
     document.body.appendChild(dot);
 
+    let cursorX = gsap.quickTo(cursor, "left", { duration: 0.4, ease: "power3" });
+    let cursorY = gsap.quickTo(cursor, "top", { duration: 0.4, ease: "power3" });
+    let dotX = gsap.quickTo(dot, "left", { duration: 0.1, ease: "power3" });
+    let dotY = gsap.quickTo(dot, "top", { duration: 0.1, ease: "power3" });
 
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let ringX = mouseX, ringY = mouseY;
+    window.addEventListener("mousemove", (e) => {
+      cursorX(e.clientX);
+      cursorY(e.clientY);
+      dotX(e.clientX);
+      dotY(e.clientY);
+    });
 
-    const lerp = (a, b, n) => (1 - n) * a + n * b;
+    // Hover effect for links and buttons
+    const hoverElements = 'a, button, .hover-target, .btn, input, textarea';
+    document.querySelectorAll(hoverElements).forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add('hovering');
+        gsap.to(cursor, {
+          scale: 3.5,
+          duration: 0.6,
+          ease: "expo.out",
+          borderColor: "rgba(255, 255, 255, 1)",
+          boxShadow: "0 0 30px rgba(255, 255, 255, 0.4)"
+        });
+        gsap.to(dot, { scale: 0, duration: 0.3, ease: "power2.in" });
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove('hovering');
+        gsap.to(cursor, {
+          scale: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          borderColor: "rgba(255, 255, 255, 0.8)",
+          boxShadow: "0 0 15px rgba(255, 255, 255, 0.2)"
+        });
+        gsap.to(dot, { scale: 1, duration: 0.4, ease: "power2.out" });
+      });
+    });
 
-    function raf() {
-      ringX = lerp(ringX, mouseX, 0.16);
-      ringY = lerp(ringY, mouseY, 0.16);
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(raf);
-    }
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.left = mouseX + 'px';
-      dot.style.top = mouseY + 'px';
-    }, { passive: true });
-
-
-    requestAnimationFrame(raf);
-
-
-    window.addEventListener('mousedown', (e) => {
-      const pulse = document.createElement('div');
-      pulse.className = 'click-pulse';
-      pulse.style.left = e.clientX + 'px';
-      pulse.style.top = e.clientY + 'px';
+    // Handle click pulse
+    window.addEventListener("mousedown", (e) => {
+      const pulse = document.createElement("div");
+      pulse.className = "click-pulse";
+      pulse.style.left = e.clientX + "px";
+      pulse.style.top = e.clientY + "px";
       document.body.appendChild(pulse);
-      pulse.addEventListener('animationend', () => pulse.remove());
+      pulse.addEventListener("animationend", () => pulse.remove());
     });
 
-    const hoverSelectors = ['a', 'button', '[role="button"]', 'input', 'select', 'textarea', '[data-hover]'];
-    let hoverCount = 0;
-    function onEnter() {
-      if (++hoverCount === 1) { document.body.classList.add('cursor--hover'); }
-    }
-    function onLeave() {
-      if (hoverCount > 0 && --hoverCount === 0) { document.body.classList.remove('cursor--hover'); }
-    }
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(hoverSelectors.join(','))) onEnter();
+    // Hide cursor when leaving window
+    document.addEventListener("mouseleave", () => {
+      gsap.to([cursor, dot], { opacity: 0, duration: 0.3 });
     });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(hoverSelectors.join(','))) onLeave();
-    });
-    document.addEventListener('mouseleave', () => {
-      dot.style.opacity = '0';
-      ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-      dot.style.opacity = '1';
-      ring.style.opacity = '1';
+    document.addEventListener("mouseenter", () => {
+      gsap.to([cursor, dot], { opacity: 1, duration: 0.3 });
     });
   })();
   const cubes = document.querySelectorAll(".cube");
