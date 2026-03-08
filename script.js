@@ -31,9 +31,17 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     // Step 1: Trigger the panel slide-out in CSS
     loader.classList.add("hidden");
 
-    // Step 2: Trigger the staggered hero entrance slightly after panels start moving
+    // Step 2: Trigger the staggered hero entrance and nav items
     setTimeout(() => {
       home.classList.add("hero-revealed");
+      // Staggered entrance for navbar items
+      gsap.from(".navbar-brand, .nav-item, .nav-whatsapp-btn", {
+        y: -20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
     }, 300);
 
     // Step 3: Cleanup loader from DOM after panels fully finish sliding
