@@ -444,12 +444,83 @@ h3 {
 }
 
 .navbar .nav-link {
-  transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
+  color: #111 !important;
+  font-size: 1.1rem;
+  margin: 0 10px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;
 }
 
 .navbar .nav-link:hover {
-  color: rgb(0, 0, 0);
-  transform: scale(1.1);
+  color: #000 !important;
+}
+
+/* Premium WhatsApp Button */
+.nav-whatsapp-btn {
+  background: #111;
+  color: white !important;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-whatsapp-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  background: #25D366 !important;
+  /* WhatsApp Green */
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* Desktop Centering Logic */
+@media (min-width: 768px) {
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* Ensure absolute positioning of nav works */
+  }
+
+  .navbar-collapse {
+    flex-grow: 1;
+    display: flex !important;
+    justify-content: center;
+    /* Center links within the available space */
+    align-items: center;
+  }
+
+  .navbar-nav {
+    /* Use relative positioning with mx-auto if collapse is flex-center */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navbar-brand {
+    order: 1;
+  }
+
+  .navbar-collapse {
+    order: 2;
+  }
+
+  .order-lg-3 {
+    order: 3;
+  }
 }
 
 .btn-lg {
