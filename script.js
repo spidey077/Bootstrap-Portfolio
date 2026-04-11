@@ -69,12 +69,13 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     const letters = document.querySelectorAll(".animated-title span");
     let index = 0;
     function animateLetters() {
+        if (letters.length === 0) return;
         letters.forEach(e => e.classList.remove("active")),
             letters[index].classList.add("active"),
             index = (index + 1) % letters.length,
             setTimeout(animateLetters, 1e3)
     }
-    animateLetters();
+    if (letters.length > 0) animateLetters();
 
     document.getElementById("lottie-animation1").addEventListener("click", function () {
         let e = document.getElementById("about");
