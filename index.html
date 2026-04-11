@@ -114,8 +114,8 @@
             </div>
         </nav>
 
-        <div id="home" style="padding-top: 300px; height: 1000px; background-color: rgb(144, 235, 235);">
-            <header class="container-fluid text-black text-center py-5">
+        <div id="home" style="padding-top: 120px; min-height: 100vh; background-color: rgb(144, 235, 235); display: flex; flex-direction: column; justify-content: center;">
+            <header class="container-fluid text-black text-center py-4">
                 <div class="cube-container cube2">
                     <div class="cube">
                         <div class="face front"></div>
@@ -149,31 +149,48 @@
                     </div>
                 </div>
 
-                <h1 class="display-2 fw-bold text-uppercase animated-title">
-                    <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
-                    <span>t</span><span>o</span>
-                    <span>m</span><span>y</span>
-                    <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
+                <!-- Social Proof Mini Banner -->
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-4 section reveal">
+                    <div class="d-flex">
+                        <img src="/Client.jpeg" alt="Client Ahsan" class="rounded-circle border border-2 border-white shadow-sm" style="width: 40px; height: 40px; object-fit: cover;">
+                        <img src="/Client2.png" alt="Client Haider" class="rounded-circle border border-2 border-white shadow-sm" style="width: 40px; height: 40px; object-fit: cover; margin-left: -15px;">
+                        <div class="rounded-circle border border-2 border-white shadow-sm bg-dark text-white d-flex align-items-center justify-content-center hover-target" style="width: 40px; height: 40px; margin-left: -15px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
+                            5.0
+                        </div>
+                    </div>
+                    <div class="text-start" style="line-height: 1.2; margin-left: 5px;">
+                        <div style="color: #f39c12; font-size: 0.85rem; margin-bottom: 2px;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="fw-bold" style="font-size: 0.9rem; color: #111;">Trusted by Growing Brands</span>
+                    </div>
+                </div>
+
+                <!-- Clear Offer -->
+                <h1 class="display-2 fw-bold section reveal" style="font-family: 'Poppins', sans-serif;">
+                    I Build <span style="background: linear-gradient(135deg, #181818, #444444); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">High-Performance</span><br>Websites That Convert
                 </h1>
 
-                <p class="lead fw-medium mt-4 mb-4" style="font-size:1.4rem;">
-                    Front-End Developer | Modern, Fast and Responsive Websites
+                <p class="lead fw-medium mt-4 mx-auto mb-5 section reveal" style="font-size:1.3rem; max-width: 550px; color: #333;">
+                    I craft lightning-fast, modern websites tailored to elevate your brand and accelerate your business growth.
                 </p>
+
+                <!-- CTA -->
                 <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-3">
                     <a href="https://wa.me/923318962777" target="_blank"
-                        class="btn btn-dark btn-lg px-4 py-2 shadow-lg section reveal hover-target"
-                        style="border-radius: 10px; font-weight: 600;">
+                        class="btn btn-dark btn-lg px-5 py-3 shadow-lg section reveal hover-target"
+                        style="border-radius: 12px; font-weight: 600;">
                         Let’s Work Together
                     </a>
 
                     <a href="/Imdadullah Resume.pdf" target="_blank" download
-                        class="btn btn-custom-outline btn-lg px-4 py-2 shadow-lg section reveal hover-target"
-                        style="border-radius: 10px; font-weight: 600;">
+                        class="btn btn-custom-outline btn-lg px-5 py-3 shadow-lg section reveal hover-target"
+                        style="border-radius: 12px; font-weight: 600;">
                         Download CV
                     </a>
                 </div>
                 <div class="row text-center"
-                    style="display: flex; justify-content: center; align-items: center; padding-top: 50px;margin-top: 170px;">
+                    style="display: flex; justify-content: center; align-items: center; margin-top: 90px; margin-bottom: 20px;">
                     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
                         type="module"></script>
                     <dotlottie-player id="lottie-animation1" class="hover-target"
