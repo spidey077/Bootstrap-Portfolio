@@ -182,6 +182,7 @@ h3 {
 
 .navbar.scrolled {
     background-color: #181818 !important;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .navbar.scrolled .nav-link,
@@ -543,12 +544,12 @@ h3 {
 }
 
 footer a:not(i):hover {
-    color: #FFD300;
+    color: #0d6efd;
     transition: color 0.3s ease-in-out;
 }
 
 footer a i:hover {
-    color: #FFD300;
+    color: #0d6efd;
     transform: scale(1.2);
     transition: all 0.3s ease-in-out;
 }
@@ -570,7 +571,7 @@ footer a i:hover {
 
 .footer-logo:hover svg {
     transform: scale(1.1) rotate(2deg);
-    filter: drop-shadow(0 0 20px rgba(255, 211, 0, 0.4));
+    filter: drop-shadow(0 0 20px rgba(13, 110, 253, 0.4));
 }
 
 .brand-tagline {
@@ -631,7 +632,7 @@ footer a i:hover {
 }
 
 .social-icon:hover {
-    color: #FFD300;
+    color: #0d6efd;
     transform: translateY(-5px);
 }
 
@@ -647,7 +648,7 @@ footer a i:hover {
 }
 
 .legal-links a:hover {
-    color: #FFD300;
+    color: #0d6efd;
 }
 
 .animated-title span {
@@ -657,7 +658,7 @@ footer a i:hover {
 
 .animated-title span.active {
     transform: scale(1.5);
-    color: #FFD300;
+    color: #0d6efd;
 }
 
 .navbar-brand svg path {
