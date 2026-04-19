@@ -246,12 +246,12 @@ h3 {
 
 .left-panel {
     left: 0;
-    border-right: 1px solid rgba(255, 211, 0, 0.1);
+    border-right: 1px solid rgba(144, 235, 235, 0.1);
 }
 
 .right-panel {
     right: 0;
-    border-left: 1px solid rgba(255, 211, 0, 0.1);
+    border-left: 1px solid rgba(144, 235, 235, 0.1);
 }
 
 #loading-screen.hidden .left-panel {
@@ -304,9 +304,9 @@ h3 {
     position: absolute;
     width: 60px;
     height: 60px;
-    border: 2px solid #FFD300;
-    background: rgba(255, 211, 0, 0.1);
-    box-shadow: 0 0 20px rgba(255, 211, 0, 0.3);
+    border: 2px solid #90EBEB;
+    background: rgba(144, 235, 235, 0.1);
+    box-shadow: 0 0 20px rgba(144, 235, 235, 0.3);
 }
 
 .cube-front {
@@ -378,8 +378,8 @@ h3 {
 .loader-progress-bar {
     width: 0%;
     height: 100%;
-    background: #FFD300;
-    box-shadow: 0 0 15px #FFD300;
+    background: #90EBEB;
+    box-shadow: 0 0 15px #90EBEB;
     animation: progressLoad 2.5s ease-in-out forwards;
 }
 
