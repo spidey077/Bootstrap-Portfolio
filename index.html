@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Muhammad Imdadullah Chishti | Front-End Developer | Web Designer</title>
+    <title>Muhammad Imdadullah Chishti | Expert Front-End Developer </title>
     <meta name="description"
         content="Discover the second portfolio of Muhammad Imdadullah, a skilled front-end developer crafting modern, responsive, and SEO-friendly websites.">
     <meta name="author" content="Muhammad Imdadullah Chishti">
@@ -31,6 +31,17 @@
 </head>
 
 <body>
+    <!-- SVG Liquify Filter for Custom Cursor -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+        <defs>
+            <filter id="liquify">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                    result="liquify" />
+                <feComposite in="SourceGraphic" in2="liquify" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
     <div class="cursor"></div>
     <div id="loading-screen">
         <div class="loader-content">
@@ -55,7 +66,7 @@
         <div class="loader-panel right-panel"></div>
     </div>
     <div id="content">
-        <nav class="navbar navbar-expand-md fixed-top" style="background-color: rgb(144, 235, 235); padding: 20px;">
+        <nav class="navbar navbar-expand-md fixed-top" style="background-color: #f5f7fa; padding: 20px;">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <svg width="50" height="50" viewBox="0 0 796 669" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,21 +93,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto fw-bold section reveal hover-target">
+                    <ul class="navbar-nav mx-auto fw-bold section reveal hover-target">
                         <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="#links">Links</a></li>
                     </ul>
                 </div>
+                <!-- Contact Button outside collapse for right-most positioning -->
+                <div class="d-none d-lg-flex align-items-center ms-lg-3 order-lg-3">
+                    <a href="https://wa.me/923318962777" target="_blank"
+                        class="btn btn-dark rounded-pill px-4 py-2 fw-bold hover-target nav-whatsapp-btn">
+                        Contact Me
+                    </a>
+                </div>
             </div>
         </nav>
 
-        <div id="home" style="padding-top: 300px; height: 1000px; background-color: rgb(144, 235, 235);">
-            <header class="container-fluid text-black text-center py-5">
+        <div id="home" style="padding-top: 120px; min-height: 100vh; background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%); display: flex; flex-direction: column; justify-content: center;">
+            <header class="container-fluid text-black text-center py-4">
                 <div class="cube-container cube2">
                     <div class="cube">
                         <div class="face front"></div>
@@ -130,31 +149,48 @@
                     </div>
                 </div>
 
-                <h1 class="display-2 fw-bold text-uppercase animated-title">
-                    <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
-                    <span>t</span><span>o</span>
-                    <span>m</span><span>y</span>
-                    <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
+                <!-- Social Proof Mini Banner -->
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-4 section reveal">
+                    <div class="d-flex">
+                        <img src="/Client.jpeg" alt="Client Ahsan" class="rounded-circle border border-2 border-white shadow-sm" style="width: 40px; height: 40px; object-fit: cover;">
+                        <img src="/Client2.png" alt="Client Haider" class="rounded-circle border border-2 border-white shadow-sm" style="width: 40px; height: 40px; object-fit: cover; margin-left: -15px;">
+                        <div class="rounded-circle border border-2 border-white shadow-sm bg-dark text-white d-flex align-items-center justify-content-center hover-target" style="width: 40px; height: 40px; margin-left: -15px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
+                            5.0
+                        </div>
+                    </div>
+                    <div class="text-start" style="line-height: 1.2; margin-left: 5px;">
+                        <div style="color: #f39c12; font-size: 0.85rem; margin-bottom: 2px;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="fw-bold" style="font-size: 0.9rem; color: #111;">Trusted by Growing Brands</span>
+                    </div>
+                </div>
+
+                <!-- Clear Offer -->
+                <h1 class="display-2 fw-bold section reveal" style="font-family: 'Poppins', sans-serif;">
+                    I Build <span style="background: linear-gradient(135deg, #181818, #444444); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">High-Performance</span><br>Websites That Convert
                 </h1>
 
-                <p class="lead fw-medium mt-4 mb-4" style="font-size:1.4rem;">
-                    Front-End Developer | ChatBot Developer | AI Agents
+                <p class="lead fw-medium mt-4 mx-auto mb-5 section reveal" style="font-size:1.3rem; max-width: 550px; color: #333;">
+                    I craft lightning-fast, modern websites tailored to elevate your brand and accelerate your business growth.
                 </p>
+
+                <!-- CTA -->
                 <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-3">
                     <a href="https://wa.me/923318962777" target="_blank"
-                        class="btn btn-dark btn-lg px-4 py-2 shadow-lg section reveal hover-target"
-                        style="border-radius: 10px; font-weight: 600;">
+                        class="btn btn-dark btn-lg px-5 py-3 shadow-lg section reveal hover-target"
+                        style="border-radius: 12px; font-weight: 600;">
                         Let’s Work Together
                     </a>
 
                     <a href="/Imdadullah Resume.pdf" target="_blank" download
-                        class="btn btn-custom-outline btn-lg px-4 py-2 shadow-lg section reveal hover-target"
-                        style="border-radius: 10px; font-weight: 600;">
+                        class="btn btn-custom-outline btn-lg px-5 py-3 shadow-lg section reveal hover-target"
+                        style="border-radius: 12px; font-weight: 600;">
                         Download CV
                     </a>
                 </div>
                 <div class="row text-center"
-                    style="display: flex; justify-content: center; align-items: center; padding-top: 50px;margin-top: 170px;">
+                    style="display: flex; justify-content: center; align-items: center; margin-top: 90px; margin-bottom: 20px;">
                     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
                         type="module"></script>
                     <dotlottie-player id="lottie-animation1" class="hover-target"
@@ -166,7 +202,7 @@
 
             </header>
         </div>
-        <section id="about" class="py-5  text-black">
+        <section id="about" class="py-5 text-black" style="background-color: #f8f9fa;">
             <div class="container" style="padding-top: 30px;padding-bottom: 20px;">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6 text-center text-lg-start">
@@ -174,14 +210,9 @@
                             Me</h2>
                         <p class="lead mt-3 section reveal"
                             style="font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                            I am Muhammad Imdadullah, a CS student and front-end web developer. I am passionate about
-                            creating responsive and visually appealing websites. With expertise in HTML, CSS,
-                            JavaScript, and Bootstrap, I build seamless and user-friendly web experiences.
-                            I’ve been exploring AI-driven automation with tools like n8n and have hands-on experience
-                            creating chatbots to make web experiences more interactive and engaging. I continuously
-                            refine my skills to stay updated with the latest web and AI technologies, ensuring
-                            high-quality and innovative solutions.
-                            Let’s build something great together!
+                            I am Muhammad Imdadullah, a Web Developer specializing in building high-performance,
+                            scalable digital solutions. My primary focus is developing fast, modern business websites
+                            using React, Next.js and Tailwind CSS
 
                         </p>
                         <a href="https://www.linkedin.com/in/imdadullah-chishti-888340326/" target="_blank"
@@ -191,26 +222,32 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 text-center mt-4 mt-lg-0 section reveal">
-                        <img src="/IMG-20241113-WA0023.jpg" loading="lazy" alt="About Us Image"
-                            class="img-fluid shadow-lg" style="max-width: 70%; height: auto;border-radius:5%;">
+                        <img src="/ProfileImage.jpeg" loading="lazy" alt="About Us Image" class="img-fluid shadow-lg"
+                            style="max-width: 50%; height: auto; border-radius: 30px;">
                     </div>
                 </div>
             </div>
         </section>
-        <section id="projects" class="py-5" style="background-color: rgb(144, 235, 235);">
+        <section id="projects" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
             <div class="container text-center" style="padding:50px;">
                 <h2 class="display-4 fw-bold text-black" style="font-family: 'Poppins', sans-serif;">My Projects</h2>
                 <p class="lead text-black mt-2" style="font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
                     Explore some of my recent projects showcasing innovation and creativity.
                 </p>
+
                 <div class="row mt-5">
                     <div class="col-sm-6 col-md-4 col-lg-4 mb-4 section reveal">
-                        <div class="card h-100 shadow-lg border-1 hover-target"
+                        <div class="card h-100 shadow-lg border-0 hover-target"
                             style="transition: transform 0.3s ease;">
-                            <img src="/1.png" class="card-img-top" loading="lazy" alt="Project 1"
+                            <img src="/2.png" class="card-img-top" loading="lazy" alt="Royal Oud Project"
                                 style="max-height: 200px; object-fit: cover;">
                             <div class="card-body text-black">
-                                <a href="https://onestopwholesale.vercel.app/" target="_blank"
+                                <h5 class="card-title fw-bold">Royal Oud Fragrances</h5>
+                                <p class="card-text" style="font-size: 0.9rem;">
+                                    A premium landing page designed for luxury perfume brand with a focus on elegant UI
+                                    and smooth user experience.
+                                </p>
+                                <a href="https://royal-oud-fragrances.vercel.app/" target="_blank"
                                     class="btn btn-dark btn-sm hover-target">
                                     View Project
                                 </a>
@@ -221,22 +258,14 @@
                     <div class="col-sm-6 col-md-4 col-lg-4 mb-4 section reveal">
                         <div class="card h-100 shadow-lg border-0 hover-target"
                             style="transition: transform 0.3s ease;">
-                            <img src="/2.png" class="card-img-top" loading="lazy" alt="Project 2"
+                            <img src="/5.png" class="card-img-top" loading="lazy" alt="Smile Craft Project"
                                 style="max-height: 200px; object-fit: cover;">
                             <div class="card-body text-black">
-                                <a href="https://royal-oud-fragrances.vercel.app/" target="_blank"
-                                    class="btn btn-dark btn-sm hover-target">
-                                    View Project
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-4 mb-4 section reveal">
-                        <div class="card h-100 shadow-lg border-1 hover-target"
-                            style="transition: transform 0.3s ease;">
-                            <img src="/5.png" class="card-img-top" loading="lazy" alt="Project 1"
-                                style="max-height: 200px; object-fit: cover;">
-                            <div class="card-body text-black">
+                                <h5 class="card-title fw-bold">Smile Craft Dental</h5>
+                                <p class="card-text" style="font-size: 0.9rem;">
+                                    A professional medical platform designed to help dental clinics manage bookings and
+                                    showcase services with a clean, trustworthy UI.
+                                </p>
                                 <a href="https://smile-craft-kappa.vercel.app/" target="_blank"
                                     class="btn btn-dark btn-sm hover-target">
                                     View Project
@@ -245,10 +274,28 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-6 col-md-4 col-lg-4 mb-4 section reveal">
+                        <div class="card h-100 shadow-lg border-0 hover-target"
+                            style="transition: transform 0.3s ease;">
+                            <img src="/1.png" class="card-img-top" loading="lazy" alt="OneStop Wholesale Project"
+                                style="max-height: 200px; object-fit: cover;">
+                            <div class="card-body text-black">
+                                <h5 class="card-title fw-bold">OneStop Wholesale</h5>
+                                <p class="card-text" style="font-size: 0.9rem;">
+                                    A high-performance wholesale marketplace built for speed, SEO, and scalability using
+                                    modern server-side architecture.
+                                </p>
+                                <a href="https://onestopwholesale.vercel.app/" target="_blank"
+                                    class="btn btn-dark btn-sm hover-target">
+                                    View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="ai-projects" class="py-5" style="background-color: #f5f5f5;">
+        <section id="ai-projects" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
             <div class="container text-center" style="padding:50px;">
                 <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">AI Automation
                     Projects</h2>
@@ -348,7 +395,7 @@
             </div>
     </div>
     </section>
-    <section id="services" class="py-5" style="background-color: rgb(144, 235, 235);">
+    <section id="services" class="py-5" style="background-color: #ffffff;">
         <div class="container text-center" style="padding:50px;">
 
             <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Services</h2>
@@ -373,9 +420,9 @@
                                             d="M109.465,89.503c0.182,0,0.359,0.019,0.533,0.053c1.146-1.998,2.191-4.095,3.135-6.286 c0.018-0.044,0.037-0.086,0.059-0.128c1.418-3.345,2.488-6.819,3.209-10.419c0.559-2.793,0.904-5.657,1.035-8.591h-16.893 c-0.307,8.574-2.867,17.03-7.639,25.371H109.465L109.465,89.503z M106.52,94.889H89.506c-5.164,7.481-12.121,14.87-20.838,22.167 c1.367-0.17,2.719-0.388,4.055-0.655c3.646-0.729,7.164-1.817,10.549-3.264l-0.002-0.004c3.441-1.48,6.646-3.212,9.609-5.199 c2.969-1.992,5.721-4.255,8.25-6.795l0.01-0.01l0,0C103.096,99.18,104.889,97.099,106.52,94.889L106.52,94.889z M54.21,117.055 c-8.716-7.296-15.673-14.685-20.838-22.166H16.361c1.631,2.21,3.423,4.291,5.379,6.24l0.01,0.011v-0.001 c2.53,2.54,5.282,4.803,8.25,6.795c2.962,1.987,6.167,3.719,9.609,5.199c0.043,0.019,0.086,0.038,0.128,0.059 c3.345,1.419,6.819,2.488,10.42,3.209C51.493,116.668,52.843,116.886,54.21,117.055L54.21,117.055z M12.852,89.503h17.122 c-4.771-8.341-7.332-16.797-7.637-25.371H5.445c0.13,2.934,0.475,5.797,1.034,8.59c0.729,3.646,1.818,7.164,3.264,10.549 l0.004-0.001C10.682,85.442,11.716,87.521,12.852,89.503L12.852,89.503z M5.445,58.747h16.997c0.625-8.4,3.412-16.857,8.407-25.371 H12.852c-1.136,1.982-2.17,4.061-3.105,6.234c-0.019,0.043-0.039,0.086-0.059,0.127C8.269,43.083,7.2,46.557,6.479,50.157 C5.92,52.95,5.575,55.814,5.445,58.747L5.445,58.747z M16.361,27.991h17.938c5.108-7.361,11.862-14.765,20.29-22.212 c-1.496,0.175-2.973,0.408-4.431,0.7c-3.647,0.729-7.164,1.818-10.549,3.264l0.001,0.003c-3.442,1.481-6.647,3.212-9.609,5.2 c-2.968,1.992-5.72,4.255-8.25,6.794l-0.011,0.01h0C19.784,23.7,17.992,25.78,16.361,27.991L16.361,27.991z M68.289,5.778 c8.428,7.447,15.182,14.851,20.291,22.212h17.939c-1.631-2.21-3.424-4.291-5.381-6.24l-0.01-0.01l0,0 c-2.529-2.54-5.281-4.802-8.25-6.794c-2.963-1.988-6.168-3.719-9.609-5.2c-0.043-0.018-0.086-0.038-0.127-0.059 c-3.346-1.418-6.82-2.488-10.42-3.208C71.264,6.187,69.785,5.954,68.289,5.778L68.289,5.778z M110.027,33.376H92.029 c4.996,8.514,7.783,16.971,8.408,25.371h16.998c-0.131-2.934-0.477-5.797-1.035-8.59c-0.73-3.646-1.818-7.164-3.264-10.549 l-0.004,0.002C112.197,37.437,111.164,35.358,110.027,33.376L110.027,33.376z M49.106,1.198C53.098,0.399,57.21,0,61.44,0 c4.23,0,8.341,0.399,12.333,1.198c3.934,0.788,7.758,1.97,11.473,3.547c0.051,0.018,0.1,0.037,0.148,0.058 c3.703,1.594,7.197,3.485,10.471,5.684c3.268,2.192,6.291,4.677,9.066,7.462c2.785,2.775,5.27,5.799,7.461,9.065 c2.197,3.275,4.09,6.768,5.684,10.473l-0.004,0.001l0.004,0.009c1.607,3.758,2.809,7.628,3.605,11.609 c0.799,3.992,1.197,8.104,1.197,12.334c0,4.23-0.398,8.343-1.197,12.335c-0.787,3.932-1.971,7.758-3.547,11.472 c-0.018,0.05-0.037,0.099-0.059,0.147c-1.594,3.705-3.486,7.197-5.684,10.472c-2.191,3.267-4.676,6.29-7.461,9.065 c-2.775,2.785-5.799,5.271-9.066,7.462c-3.273,2.198-6.768,4.091-10.471,5.684l-0.002-0.004l-0.01,0.004 c-3.758,1.606-7.629,2.808-11.609,3.604c-3.992,0.799-8.104,1.198-12.333,1.198c-4.229,0-8.342-0.399-12.334-1.198 c-3.933-0.787-7.758-1.97-11.474-3.546c-0.049-0.019-0.098-0.037-0.147-0.059c-3.705-1.593-7.197-3.485-10.472-5.684 c-3.266-2.191-6.29-4.677-9.065-7.462c-2.785-2.775-5.27-5.799-7.461-9.065c-2.198-3.274-4.09-6.767-5.684-10.472l0.004-0.002 l-0.004-0.009c-1.606-3.758-2.808-7.628-3.604-11.609C0.4,69.782,0,65.67,0,61.439c0-4.229,0.4-8.342,1.199-12.334 c0.787-3.933,1.97-7.758,3.546-11.473c0.018-0.049,0.037-0.099,0.058-0.147c1.594-3.705,3.485-7.198,5.684-10.473 c2.192-3.266,4.677-6.29,7.461-9.065c2.775-2.785,5.799-5.27,9.065-7.462c3.275-2.198,6.768-4.09,10.472-5.684l0.001,0.004 l0.009-0.004C41.254,3.197,45.125,1.995,49.106,1.198L49.106,1.198z M64.133,9.268v18.723h17.826 C77.275,21.815,71.34,15.575,64.133,9.268L64.133,9.268z M64.133,33.376v25.371h30.922c-0.699-8.332-3.789-16.788-9.318-25.371 H64.133L64.133,33.376z M64.133,64.132v25.371h22.51c5.328-8.396,8.189-16.854,8.531-25.371H64.133L64.133,64.132z M64.133,94.889 v18.952c7.645-6.283,13.902-12.601,18.746-18.952H64.133L64.133,94.889z M58.747,113.843V94.889H40 C44.843,101.24,51.1,107.559,58.747,113.843L58.747,113.843z M58.747,89.503V64.132H27.706c0.341,8.518,3.201,16.975,8.531,25.371 H58.747L58.747,89.503z M58.747,58.747V33.376H37.143c-5.529,8.583-8.619,17.04-9.319,25.371H58.747L58.747,58.747z M58.747,27.991 V9.266C51.54,15.573,45.604,21.815,40.92,27.991H58.747L58.747,27.991z" />
                                     </g>
                                 </svg>
-                                <h5 class="fw-bold mb-3 text-start">Website Development</h5>
+                                <h5 class="fw-bold mb-3 text-start">High-Performance Website</h5>
                                 <p class="text-start" style="font-size: 1.2rem; line-height: 1.5;">
-                                    Create a personal or business website to showcase your work.
+                                    Fast, SEO-optimized, and scalable websites built with modern technologies.
                                 </p>
                             </div>
                             <div class="text-start mt-4">
@@ -447,8 +494,8 @@
                                 </p>
                             </div>
                             <div class="text-start mt-4">
-                                <a href="https://www.upwork.com/services/product/development-it-a-custom-faq-chatbot-for-your-website-1918551824673415175"
-                                    class="btn btn-outline-dark" target="_blank">Discuss This Service</a>
+                                <a href="https://wa.me/923318962777" target="_blank" class="btn btn-outline-dark"
+                                    target="_blank">Discuss This Service</a>
                             </div>
                         </div>
                     </div>
@@ -470,14 +517,13 @@
                                 </svg>
                                 <h5 class="fw-bold mb-3 text-start">AI Agents & Automation</h5>
                                 <p class="text-start" style="font-size: 1.2rem; line-height: 1.5;">
-                                    Build custom AI agents and automate workflows with <strong>n8n</strong> to save
-                                    time,
-                                    boost efficiency, and enhance customer experience.
+                                    Workflow Architecture using n8n to automate repetitive tasks and sync your business
+                                    data
                                 </p>
                             </div>
                             <div class="text-start mt-4">
-                                <a href="https://www.upwork.com/services/product/development-it-ai-agents-that-reduce-manual-work-and-boost-productivity-1962340315315438044"
-                                    class="btn btn-outline-dark" target="_blank">Discuss This Service</a>
+                                <a href="https://wa.me/923318962777" target="_blank" class="btn btn-outline-dark"
+                                    target="_blank">Discuss This Service</a>
                             </div>
                         </div>
                     </div>
@@ -486,7 +532,7 @@
             </div>
         </div>
     </section>
-    <section id="skills" class="py-5" style="background-color: #f5f5f5;">
+    <section id="skills" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
         <div class="container text-center" style="padding: 50px;">
             <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Skills</h2>
             <p class="lead text-dark mt-2 mx-auto"
@@ -500,10 +546,14 @@
                     <img src="/css3-alt-brands.svg" alt="CSS3" title="CSS3">
                     <img src="/js-brands.svg" alt="JavaScript" title="JavaScript">
                     <img src="/bootstrap-brands.svg" alt="Bootstrap" title="Bootstrap">
-                    <img src="/github-brands.svg" alt="GitHub" title="GitHub">
+                    <img src="/tailwind-css-svgrepo-com.svg" alt="Tailwind CSS" title="Tailwind CSS">
                     <img src="/react-brands-solid-full.svg" alt="React" title="React">
+                    <img src="/nextjs-icon-svgrepo-com.svg" alt="Next.js" title="Next.js">
                     <img src="/python-brands-solid-full.svg" alt="Python" title="Python">
                     <img src="/java-brands.svg" alt="Java" title="Java">
+                    <img src="/vercel-icon-svgrepo-com.svg" alt="Vercel" title="Vercel">
+                    <img src="/github-brands.svg" alt="GitHub" title="GitHub">
+                    <img src="/git-merge-svgrepo-com.svg" alt="Git" title="Git">
                     <img src="/figma-brands.svg" alt="Figma" title="Figma">
                     <img src="/icons8-photoshop.svg" alt="Photoshop" title="Photoshop">
                     <img src="/n8n.svg" alt="n8n" title="n8n">
@@ -513,10 +563,14 @@
                     <img src="/css3-alt-brands.svg" alt="CSS3" title="CSS3">
                     <img src="/js-brands.svg" alt="JavaScript" title="JavaScript">
                     <img src="/bootstrap-brands.svg" alt="Bootstrap" title="Bootstrap">
-                    <img src="/github-brands.svg" alt="GitHub" title="GitHub">
+                    <img src="/tailwind-css-svgrepo-com.svg" alt="Tailwind CSS" title="Tailwind CSS">
                     <img src="/react-brands-solid-full.svg" alt="React" title="React">
+                    <img src="/nextjs-icon-svgrepo-com.svg" alt="Next.js" title="Next.js">
                     <img src="/python-brands-solid-full.svg" alt="Python" title="Python">
                     <img src="/java-brands.svg" alt="Java" title="Java">
+                    <img src="/vercel-icon-svgrepo-com.svg" alt="Vercel" title="Vercel">
+                    <img src="/github-brands.svg" alt="GitHub" title="GitHub">
+                    <img src="/git-merge-svgrepo-com.svg" alt="Git" title="Git">
                     <img src="/figma-brands.svg" alt="Figma" title="Figma">
                     <img src="/icons8-photoshop.svg" alt="Photoshop" title="Photoshop">
                     <img src="/n8n.svg" alt="n8n" title="n8n">
@@ -526,7 +580,58 @@
         </div>
     </section>
 
-    <section id="contact" style="background-color: rgb(144, 235, 235); width: 100%;">
+    <section id="testimonials" class="py-5" style="background-color: #ffffff;">
+        <div class="container text-center" style="padding: 50px;">
+            <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Client Testimonials</h2>
+            <p class="lead text-dark mt-2 mx-auto" style="max-width: 600px; font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
+                Hear what my clients have to say about my work and their experience.
+            </p>
+
+            <div class="row mt-5 justify-content-center gap-lg-4">
+                <div class="col-12 col-md-6 col-lg-5 mb-4 section reveal">
+                    <div class="card h-100 shadow-lg border-0 hover-target" style="transition: transform 0.3s ease; padding: 2rem;">
+                        <div class="card-body text-dark d-flex flex-column align-items-center">
+                            <img src="/Client.jpeg" loading="lazy" alt="Client Ahsan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
+                            <h5 class="fw-bold mb-1" style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Ahsan</h5>
+                            <p class="text-muted mb-3" style="font-size: 0.9rem;">Satisfied Client</p>
+                            <div style="color: #f39c12; margin-bottom: 15px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="card-text text-center" style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
+                                "He built a website for me by first creating the design. After I approved it, he developed the actual website. I really liked the design and everything."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-5 mb-4 section reveal">
+                    <div class="card h-100 shadow-lg border-0 hover-target" style="transition: transform 0.3s ease; padding: 2rem;">
+                        <div class="card-body text-dark d-flex flex-column align-items-center">
+                            <img src="/Client2.png" loading="lazy" alt="Client Haider Ali" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
+                            <h5 class="fw-bold mb-1" style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Haider Ali</h5>
+                            <p class="text-muted mb-3" style="font-size: 0.9rem;">Satisfied Client</p>
+                            <div style="color: #f39c12; margin-bottom: 15px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="card-text text-center" style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
+                                "The website's aesthetics, smooth animations, and overall design are absolutely fantastic. I really loved the final result!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%); width: 100%;">
         <div class="container py-5">
             <div class="text-center mb-5 section reveal" style="padding-top: 100px; padding-bottom: 30px;">
                 <h2 class="display-4 fw-bold text-black">Contact Me</h2>
@@ -548,7 +653,7 @@
                                     placeholder="Your Email" required>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label fw-bold" for="message">Message</label>
+                                <label class="form-label fw-bold" for="message">Project Details</label>
                                 <textarea class="form-control" id="message" name="message" rows="4"
                                     placeholder="Type Here" required></textarea>
                             </div>
@@ -564,7 +669,7 @@
     <div id="chatbot-wrapper">
         <!-- Chatbot Toggle Button -->
         <div class="chatbot-button">
-            <i class="fas fa-comment-dots" style="font-size: 28px;"></i>
+            <i class="fas fa-comment-dots"></i>
         </div>
 
         <!-- Chatbot Container -->
@@ -585,19 +690,30 @@
             <div id="chatMessages" class="chat-messages">
                 <div class="message bot-message">
                     Hi there! 👋 How can I help you today?
+                    <div class="quick-options mt-2">
+                        <button class="quick-option-btn hover-target">What services do you offer?</button>
+                        <button class="quick-option-btn hover-target">Show my projects</button>
+                        <button class="quick-option-btn hover-target">How can I hire you?</button>
+                    </div>
                 </div>
             </div>
 
             <div class="chat-input-area">
                 <div class="input-group">
-                    <input type="text" id="question" class="form-control" placeholder="Type a message..."
-                        onkeypress="handleEnter(event)">
-                    <button class="btn btn-primary send-btn" onclick="askOpenAI()">
+                    <input type="text" id="question" class="form-control" placeholder="Type a message...">
+                    <button class="btn btn-primary send-btn">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div id="whatsapp-wrapper">
+        <a href="https://wa.me/923318962777" target="_blank" class="whatsapp-button hover-target">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <footer id="links" class="modern-footer">
@@ -636,6 +752,7 @@
                             <li><a href="#projects">Work</a></li>
                             <li><a href="#services">Services</a></li>
                             <li><a href="#skills">Skills</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
 
