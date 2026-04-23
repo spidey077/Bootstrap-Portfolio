@@ -101,7 +101,7 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
 
     // Send message on button click
     const sendBtn = chatbotWrapper.querySelector(".send-btn");
-    if (sendBtn) sendBtn.addEventListener("click", askOpenAI);
+    if (sendBtn) sendBtn.addEventListener("click", () => askOpenAI());
 
     // Send message on Enter key
     const questionInput = chatbotWrapper.querySelector("#question");
@@ -124,7 +124,7 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     // Chatbot Logic
     async function askOpenAI(msgText = null) {
         const inputField = chatbotWrapper.querySelector("#question");
-        const question = msgText || inputField.value.trim();
+        const question = (typeof msgText === 'string') ? msgText : inputField.value.trim();
         const chatMessages = chatbotWrapper.querySelector("#chatMessages");
 
         if (!question) return;
@@ -173,7 +173,7 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     // Attach click listeners to quick options
     document.querySelectorAll('.quick-option-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            askOpenAI(e.target.innerText);
+            askOpenAI(e.currentTarget.innerText);
         });
     });
 
