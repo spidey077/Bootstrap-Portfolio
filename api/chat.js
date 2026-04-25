@@ -16,10 +16,10 @@ export default async function handler(req) {
   // Basic Rate Limiting
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
   const now = Date.now();
-  
+
   if (ip !== 'unknown') {
     const userLimit = ipRateLimitMap.get(ip) || { count: 0, startTime: now };
-    
+
     if (now - userLimit.startTime > RATE_LIMIT_WINDOW_MS) {
       // Reset window
       userLimit.count = 1;
@@ -31,14 +31,14 @@ export default async function handler(req) {
       }
     }
     ipRateLimitMap.set(ip, userLimit);
-    
+
     // Cleanup old entries occasionally to prevent memory leaks in the edge node
     if (ipRateLimitMap.size > 1000) {
-        for (const [key, value] of ipRateLimitMap.entries()) {
-            if (now - value.startTime > RATE_LIMIT_WINDOW_MS) {
-                ipRateLimitMap.delete(key);
-            }
+      for (const [key, value] of ipRateLimitMap.entries()) {
+        if (now - value.startTime > RATE_LIMIT_WINDOW_MS) {
+          ipRateLimitMap.delete(key);
         }
+      }
     }
   }
 
@@ -48,6 +48,39 @@ export default async function handler(req) {
     if (!messages || !Array.isArray(messages)) {
       return new Response(JSON.stringify({ error: 'Messages array is required' }), { status: 400 });
     }
+
+    // --- LEAD CAPTURE LOGIC (Discord Webhook) ---
+    // PASTE YOUR DISCORD WEBHOOK URL HERE
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1497427277821116446/vUWhWnzLx9_U7i6lv2wxExLATwpG1mmIkilvij9s3PLOA2vhyKOiGv7VMCw21Bep46HA";
+
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'user') {
+        // Simple regex to check if user typed an email address
+        const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/;
+        const match = lastMessage.content.match(emailRegex);
+
+        if (match && DISCORD_WEBHOOK_URL) {
+          const email = match[0];
+          // Get the last 3 messages for context
+          const context = messages.slice(-3).map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\\n');
+
+          try {
+            // Fire webhook in background without slowing down chat
+            fetch(DISCORD_WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: `**🚨 NEW PORTFOLIO LEAD DETECTED! 🚨**\n**Email captured:** \`${email}\`\n\n**Recent Chat Context:**\n\`\`\`text\n${context}\n\`\`\``
+              })
+            }).catch(e => console.error("Discord Webhook Error", e));
+          } catch (e) {
+            console.error("Failed to execute webhook", e);
+          }
+        }
+      }
+    }
+    // --------------------------------------------
 
     const systemPrompt = {
       role: "system",
@@ -69,7 +102,8 @@ Rules:
 - Answer only based on this info
 - Be short and clear
 - Keep answers under 2 sentences
-- If asked "How can I hire you?" or similar, answer explicitly: "You can hire me by contacting me through WhatsApp at +92 3318962777 or via email at imdadullahchishti@gmail.com."
+- If asked "How can I hire you?" or if the user wants to start a project, explicitly ask: "Please provide your email address so Imdadullah can reach out, or contact him directly on WhatsApp at +92 3318962777."
+- If the user provides an email address, say: "Thank you! I will forward your details to Imdadullah right away."
 - If unsure, say: "You can contact me for more details."
 `
     };
@@ -88,7 +122,7 @@ Rules:
     });
 
     if (!response.ok) {
-        return new Response(response.body, { status: response.status });
+      return new Response(response.body, { status: response.status });
     }
 
     return new Response(response.body, {
