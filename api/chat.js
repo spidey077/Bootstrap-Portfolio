@@ -1,27 +1,57 @@
-export default async function handler(req, res) {
+export const config = {
+  runtime: 'edge',
+};
+
+// In-memory rate limiting map
+// This will reset on cold starts, but provides basic protection
+const ipRateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+export default async function handler(req) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return new Response(JSON.stringify({ error: 'Method Not Allowed' }), { status: 405 });
   }
 
-  const { message } = req.body;
-
-  if (!message) {
-    return res.status(400).json({ error: 'Message is required' });
+  // Basic Rate Limiting
+  const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  const now = Date.now();
+  
+  if (ip !== 'unknown') {
+    const userLimit = ipRateLimitMap.get(ip) || { count: 0, startTime: now };
+    
+    if (now - userLimit.startTime > RATE_LIMIT_WINDOW_MS) {
+      // Reset window
+      userLimit.count = 1;
+      userLimit.startTime = now;
+    } else {
+      userLimit.count++;
+      if (userLimit.count > MAX_REQUESTS_PER_WINDOW) {
+        return new Response(JSON.stringify({ error: 'Too many requests. Please try again later.' }), { status: 429 });
+      }
+    }
+    ipRateLimitMap.set(ip, userLimit);
+    
+    // Cleanup old entries occasionally to prevent memory leaks in the edge node
+    if (ipRateLimitMap.size > 1000) {
+        for (const [key, value] of ipRateLimitMap.entries()) {
+            if (now - value.startTime > RATE_LIMIT_WINDOW_MS) {
+                ipRateLimitMap.delete(key);
+            }
+        }
+    }
   }
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: `
+    const { messages } = await req.json();
+
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(JSON.stringify({ error: 'Messages array is required' }), { status: 400 });
+    }
+
+    const systemPrompt = {
+      role: "system",
+      content: `
 You are a chatbot for Imdadullah's portfolio.
 
 Facts:
@@ -42,19 +72,35 @@ Rules:
 - If asked "How can I hire you?" or similar, answer explicitly: "You can hire me by contacting me through WhatsApp at +92 3318962777 or via email at imdadullahchishti@gmail.com."
 - If unsure, say: "You can contact me for more details."
 `
-          },
-          { role: "user", content: message }
-        ]
+    };
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [systemPrompt, ...messages],
+        stream: true
       })
     });
 
-    const data = await response.json();
     if (!response.ok) {
-        return res.status(response.status).json(data);
+        return new Response(response.body, { status: response.status });
     }
-    res.status(200).json(data);
+
+    return new Response(response.body, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
+
   } catch (error) {
     console.error("Chat API error:", error);
-    res.status(500).json({ error: "Something went wrong" });
+    return new Response(JSON.stringify({ error: "Something went wrong" }), { status: 500 });
   }
 }
