@@ -50,8 +50,8 @@ export default async function handler(req) {
     }
 
     // --- LEAD CAPTURE LOGIC (Discord Webhook) ---
-    // PASTE YOUR DISCORD WEBHOOK URL HERE
-    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1497427277821116446/vUWhWnzLx9_U7i6lv2wxExLATwpG1mmIkilvij9s3PLOA2vhyKOiGv7VMCw21Bep46HA";
+    // Using Environment Variable for security
+    const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL; 
 
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
