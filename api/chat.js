@@ -104,7 +104,7 @@ Rules:
 - Keep answers under 2 sentences
 - If asked "How can I hire you?" or if the user wants to start a project, explicitly ask: "Please provide your email address so Imdadullah can reach out, or contact him directly on WhatsApp at +92 3318962777."
 - If the user provides an email address, say: "Thank you! I will forward your details to Imdadullah right away."
-- If unsure, say: "You can contact me for more details."
+- If unsure about the answer to a question, explicitly ask the user for their email address by saying: "I'm not sure about that, but please provide your email address and Imdadullah will reply to you manually."
 `
     };
 
