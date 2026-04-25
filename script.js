@@ -181,13 +181,16 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
             const decoder = new TextDecoder("utf-8");
             let done = false;
             let botFullResponse = "";
+            let buffer = "";
 
             while (!done) {
                 const { value, done: readerDone } = await reader.read();
                 done = readerDone;
                 if (value) {
-                    const chunk = decoder.decode(value, { stream: true });
-                    const lines = chunk.split("\n");
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split("\n");
+                    buffer = lines.pop(); // Keep the last incomplete line in the buffer
+                    
                     for (const line of lines) {
                         if (line.startsWith("data: ")) {
                             const dataStr = line.replace("data: ", "").trim();
