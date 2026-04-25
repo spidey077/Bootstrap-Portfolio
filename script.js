@@ -122,16 +122,32 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
         }
     });
     // Chatbot Logic
+    let chatHistory = [];
+    const MAX_HISTORY = 5;
+    let isGenerating = false;
+
     async function askOpenAI(msgText = null) {
+        if (isGenerating) return;
+
         const inputField = chatbotWrapper.querySelector("#question");
+        const sendBtn = chatbotWrapper.querySelector(".send-btn");
         const question = (typeof msgText === 'string') ? msgText : inputField.value.trim();
         const chatMessages = chatbotWrapper.querySelector("#chatMessages");
 
         if (!question) return;
 
+        isGenerating = true;
+        if (inputField) inputField.disabled = true;
+        if (sendBtn) sendBtn.disabled = true;
+
         // Append User Message
         appendMessage(question, 'user-message');
         if (!msgText) inputField.value = "";
+        
+        chatHistory.push({ role: "user", content: question });
+        if (chatHistory.length > MAX_HISTORY) {
+            chatHistory = chatHistory.slice(-MAX_HISTORY);
+        }
 
         // Simulate Typing
         const typingIndicator = document.createElement('div');
@@ -147,26 +163,72 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ message: question })
+                body: JSON.stringify({ messages: chatHistory })
             });
 
+            if (res.status === 429) {
+                throw new Error("RATE_LIMIT");
+            }
             if (!res.ok) throw new Error("Network response was not ok");
-            const data = await res.json();
-            const answer = data.choices[0].message.content;
-
+            
             // Remove typing indicator
             const indicator = document.getElementById('typingIndicator');
             if (indicator) indicator.remove();
 
-            appendMessage(answer, 'bot-message');
+            const botMessageDiv = appendMessage("", 'bot-message');
+            
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder("utf-8");
+            let done = false;
+            let botFullResponse = "";
+
+            while (!done) {
+                const { value, done: readerDone } = await reader.read();
+                done = readerDone;
+                if (value) {
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split("\n");
+                    for (const line of lines) {
+                        if (line.startsWith("data: ")) {
+                            const dataStr = line.replace("data: ", "").trim();
+                            if (dataStr === "[DONE]") continue;
+                            try {
+                                const parsed = JSON.parse(dataStr);
+                                const content = parsed.choices[0]?.delta?.content || "";
+                                botFullResponse += content;
+                                botMessageDiv.innerHTML = botFullResponse; // update word by word
+                                scrollToBottom();
+                            } catch (e) {
+                                console.error("Error parsing stream data", e);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            chatHistory.push({ role: "assistant", content: botFullResponse });
+            if (chatHistory.length > MAX_HISTORY) {
+                chatHistory = chatHistory.slice(-MAX_HISTORY);
+            }
+
         } catch (error) {
             console.error("Chat API error:", error);
             // Remove typing indicator
             const indicator = document.getElementById('typingIndicator');
             if (indicator) indicator.remove();
 
-            const fallbackMsg = "You can contact me for more details.";
+            let fallbackMsg = "You can contact me for more details.";
+            if (error.message === "RATE_LIMIT") {
+                fallbackMsg = "You're sending messages too fast. Please wait a moment.";
+            }
             appendMessage(fallbackMsg, 'bot-message');
+        } finally {
+            isGenerating = false;
+            if (inputField) {
+                inputField.disabled = false;
+                inputField.focus();
+            }
+            if (sendBtn) sendBtn.disabled = false;
         }
     }
 
@@ -198,6 +260,7 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
         messageDiv.innerHTML = text; // using innerHTML to allow basic formatting if needed
         chatMessages.appendChild(messageDiv);
         scrollToBottom();
+        return messageDiv;
     }
 
     function scrollToBottom() {
