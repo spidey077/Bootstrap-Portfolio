@@ -80,23 +80,25 @@ export default async function handler(req) {
     // 1. Fetch Dynamic Facts from Google Sheets
     const dynamicFacts = await getDynamicFacts();
 
-    // 2. LEAD CAPTURE LOGIC (Discord)
-    const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
+    // 2. LEAD CAPTURE LOGIC (Email via Getform)
+    const GETFORM_ENDPOINT = "https://getform.io/f/bwnqylra";
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
       if (lastMessage.role === 'user') {
         const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/;
         const match = lastMessage.content.match(emailRegex);
-        if (match && DISCORD_WEBHOOK_URL) {
+        if (match) {
           const email = match[0];
-          const context = messages.slice(-3).map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n');
-          fetch(DISCORD_WEBHOOK_URL, {
+          const context = messages.slice(-5).map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n');
+          fetch(GETFORM_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              content: `**🚨 NEW LEAD! 🚨**\n**Email:** \`${email}\`\n\n**Context:**\n\`\`\`text\n${context}\n\`\`\``
+              email: email,
+              message: `🚨 NEW LEAD FROM CHATBOT 🚨\n\nContext:\n${context}`,
+              source: "Chatbot"
             })
-          }).catch(e => console.error("Webhook Error", e));
+          }).catch(e => console.error("Lead Error", e));
         }
       }
     }
@@ -118,8 +120,8 @@ ${dynamicFacts || "No additional updates at the moment."}
 RULES:
 - Answer only based on the info above.
 - Be short and clear (max 2 sentences).
-- If asked to hire/start project: Ask for their email or give WhatsApp.
-- If unsure: Ask for their email so Imdadullah can reply manually.
+- If a client wants to hire you or if you don't understand something: Just say "drop your email address here and imdadullah will contact you".
+- For general questions about Imdadullah's work or skills: Reply by yourself based on the CORE INFO and FAQS.
 `
     };
 
