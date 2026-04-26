@@ -94,7 +94,38 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     function toggleChatbot() {
         chatbotContainer.classList.toggle("open");
         chatbotBtn.classList.toggle("hidden", chatbotContainer.classList.contains("open"));
+        if (chatbotContainer.classList.contains("open")) {
+            hideTeaser();
+            const badge = chatbotWrapper.querySelector(".chatbot-badge");
+            if (badge) badge.style.display = 'none';
+        }
     }
+
+    function hideTeaser() {
+        const teaser = chatbotWrapper.querySelector(".chatbot-teaser");
+        if (teaser) teaser.classList.remove("visible");
+    }
+
+    // Show teaser after 4 seconds
+    setTimeout(() => {
+        const teaser = chatbotWrapper.querySelector(".chatbot-teaser");
+        if (teaser && !chatbotContainer.classList.contains("open")) {
+            teaser.classList.add("visible");
+        }
+    }, 4000);
+
+    // Periodic shake to grab attention
+    setInterval(() => {
+        if (!chatbotContainer.classList.contains("open")) {
+            gsap.to(chatbotBtn, {
+                x: 5,
+                duration: 0.1,
+                repeat: 5,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
+        }
+    }, 10000);
 
     chatbotBtn.addEventListener("click", toggleChatbot);
     if (chatbotCloseBtn) chatbotCloseBtn.addEventListener("click", toggleChatbot);
