@@ -180,13 +180,16 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
             chatHistory = chatHistory.slice(-MAX_HISTORY);
         }
 
-        // Simulate Typing
+        // Simulate Typing (Premium Thinking State)
         const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message bot-message text-muted fst-italic';
+        typingIndicator.className = 'message bot-message typing-indicator';
         typingIndicator.id = 'typingIndicator';
-        typingIndicator.innerHTML = '<i class="fas fa-ellipsis-h"></i> Typing...';
+        typingIndicator.innerHTML = '<span></span><span></span><span></span>';
         chatMessages.appendChild(typingIndicator);
         scrollToBottom();
+
+        // Deliberate "thinking" delay to feel more human
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         try {
             const res = await fetch("/api/chat", {
