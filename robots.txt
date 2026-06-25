@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imdadullahbootstrap.vercel.app/sitemap.xml
+Sitemap: https://imdadullah.vercel.app/sitemap.xml
