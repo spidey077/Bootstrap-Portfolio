@@ -154,6 +154,23 @@ h3 {
     z-index: 1100 !important;
 }
 
+/* True center the nav links on large screens */
+@media (min-width: 768px) {
+    .navbar .container {
+        position: relative;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .navbar-nav {
+        margin: 0 auto !important;
+    }
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(50px);
