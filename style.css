@@ -165,6 +165,20 @@ h3 {
     transform: translateY(0);
 }
 
+/* Per-card reveal: starts below & transparent, slides up + fades on viewport entry */
+.card-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.55s cubic-bezier(0.165, 0.84, 0.44, 1),
+                transform 0.55s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: var(--card-delay, 0s);
+}
+
+.card-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .card {
     border-radius: 15px;
     overflow: hidden;
@@ -1610,7 +1624,8 @@ body.menu-open {
     z-index: 1090;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -1621,16 +1636,16 @@ body.menu-open {
 
 .mobile-menu-overlay.open {
     opacity: 1;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #ffffff;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     pointer-events: auto;
 }
 
 .mobile-menu-content {
     text-align: center;
     width: 100%;
-    padding: 2rem;
+    padding: 110px 1.5rem 3rem 1.5rem;
 }
 
 .mobile-nav-links {
@@ -1640,7 +1655,7 @@ body.menu-open {
 }
 
 .mobile-nav-links li {
-    margin: 1.25rem 0;
+    margin: 0.85rem 0;
     overflow: hidden;
 }
 
