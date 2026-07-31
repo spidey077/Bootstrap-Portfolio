@@ -564,26 +564,44 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
         cube.style.animationDelay = delay;
     });
 
-    // Hamburger Menu Logic
-    const navbarToggler = document.querySelector(".navbar-toggler");
-    const navbarCollapse = document.querySelector(".navbar-collapse");
-    const navLinks = document.querySelectorAll(".nav-link");
+    // Custom Hamburger & Full-Screen Mobile Menu Overlay Logic
+    const customToggle = document.querySelector(".custom-menu-toggle");
+    const mobileOverlay = document.getElementById("mobileMenuOverlay");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
-    // Close on click outside
-    document.addEventListener("click", function (event) {
-        if (navbarCollapse.classList.contains("show") &&
-            !navbarCollapse.contains(event.target) &&
-            !navbarToggler.contains(event.target)) {
-            new bootstrap.Collapse(navbarCollapse).hide();
+    if (customToggle && mobileOverlay) {
+        function openMenu() {
+            customToggle.classList.add("open");
+            mobileOverlay.classList.add("open");
+            document.body.classList.add("menu-open");
         }
-    });
 
-    // Close on link click
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (navbarCollapse.classList.contains("show")) {
-                new bootstrap.Collapse(navbarCollapse).hide();
+        function closeMenu() {
+            customToggle.classList.remove("open");
+            mobileOverlay.classList.remove("open");
+            document.body.classList.remove("menu-open");
+        }
+
+        customToggle.addEventListener("click", () => {
+            if (mobileOverlay.classList.contains("open")) {
+                closeMenu();
+            } else {
+                openMenu();
             }
         });
-    });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                closeMenu();
+            });
+        });
+
+        // Close menu when clicking outside mobile menu content
+        mobileOverlay.addEventListener("click", (e) => {
+            if (e.target === mobileOverlay) {
+                closeMenu();
+            }
+        });
+    }
 });
