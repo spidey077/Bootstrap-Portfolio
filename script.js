@@ -188,11 +188,23 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
 
     // Reverted Reveal Logic (Manual CSS class toggle)
     const revealElements = document.querySelectorAll(".reveal");
+    const cardRevealElements = document.querySelectorAll(".card-reveal");
+
     function checkReveal() {
+        const windowHeight = window.innerHeight;
+
         revealElements.forEach(el => {
             let top = el.getBoundingClientRect().top;
-            let windowHeight = window.innerHeight;
             if (top < windowHeight - 80) {
+                el.classList.add("active");
+            } else {
+                el.classList.remove("active");
+            }
+        });
+
+        cardRevealElements.forEach(el => {
+            let top = el.getBoundingClientRect().top;
+            if (top < windowHeight - 60) {
                 el.classList.add("active");
             } else {
                 el.classList.remove("active");
