@@ -1853,3 +1853,67 @@ body.menu-open {
     }
 }
 
+
+/* Form Animations */
+.form-select, .form-control {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background-color 0.25s ease, background-position 0.25s ease;
+}
+
+.form-select:hover, .form-control:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+.form-select:focus, .form-control:focus {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: #000;
+    transform: translateY(-2px) scale(1.01);
+}
+
+.contact-form .form-select {
+    appearance: none;
+    background-color: #fff;
+    background-image: linear-gradient(45deg, transparent 50%, #111 50%), linear-gradient(135deg, #111 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(1.15em), calc(100% - 12px) calc(1.15em);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.75rem;
+    cursor: pointer;
+}
+
+.contact-form .form-select:hover {
+    background-position: calc(100% - 16px) calc(1.1em), calc(100% - 10px) calc(1.1em);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form .form-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.12), 0 12px 26px rgba(0, 0, 0, 0.12);
+    background-position: calc(100% - 16px) calc(1.05em), calc(100% - 10px) calc(1.05em);
+}
+
+.contact-form .form-select option {
+    padding: 0.65rem 0.9rem;
+}
+
+@media (max-width: 768px) {
+    /* Make pricing text smaller on mobile to match other sections */
+    .pricing-text {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .pricing-features li {
+        font-size: 0.85rem !important;
+    }
+    
+    .pricing-title {
+        font-size: 1.15rem !important;
+    }
+    
+    .pricing-price {
+        font-size: 1.6rem !important;
+    }
+}
+
