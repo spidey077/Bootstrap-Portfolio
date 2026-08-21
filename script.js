@@ -131,6 +131,90 @@ const initParticleAnimation = () => {
     animate();
 };
 
+const processSteps = [
+    {
+        number: '01',
+        title: 'Discover',
+        description: 'Understand the business, its audience, current pain points, must-have features and where the biggest wins are.'
+    },
+    {
+        number: '02',
+        title: 'Plan',
+        description: 'Map out the sitemap, page structure, content flow and project scope before any design work begins.'
+    },
+    {
+        number: '03',
+        title: 'Design',
+        description: 'Shape the look, feel and layout of every screen with usability, clarity and brand trust in mind.'
+    },
+    {
+        number: '04',
+        title: 'Build',
+        description: 'Develop the frontend, backend, CMS, forms, database and any integrations the project needs.'
+    },
+    {
+        number: '05',
+        title: 'Launch',
+        description: 'Test across devices, forms and functionality, then deploy to production.'
+    },
+    {
+        number: '06',
+        title: 'Support',
+        description: 'Ongoing maintenance, performance tracking, content updates and new features as the business grows.'
+    }
+];
+
+const initProcessTimeline = (steps = processSteps) => {
+    const timeline = document.querySelector('[data-process-timeline]');
+    const stepList = document.querySelector('[data-process-steps]');
+    if (!timeline || !stepList) return;
+
+    stepList.innerHTML = steps.map(step => `
+        <li class="process-step">
+            <span class="process-node" aria-hidden="true">${step.number}</span>
+            <span class="process-step-number">${step.number}</span>
+            <h3 class="process-step-title">${step.title}</h3>
+            <p class="process-step-description">${step.description}</p>
+        </li>
+    `).join('');
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealTargets = document.querySelectorAll('#process .process-reveal, #process .process-step');
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealTargets.forEach(element => element.classList.add('is-visible'));
+    } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+
+        revealTargets.forEach(element => revealObserver.observe(element));
+    }
+
+    const progressLine = timeline.querySelector('.process-spine-progress');
+    let ticking = false;
+    const updateSpine = () => {
+        const timelineRect = timeline.getBoundingClientRect();
+        const viewportAnchor = window.innerHeight * 0.55;
+        const progress = Math.min(1, Math.max(0, (viewportAnchor - timelineRect.top) / timelineRect.height));
+        progressLine.style.transform = `scaleY(${reducedMotion ? 1 : progress})`;
+        ticking = false;
+    };
+    const requestSpineUpdate = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateSpine);
+            ticking = true;
+        }
+    };
+
+    updateSpine();
+    window.addEventListener('scroll', requestSpineUpdate, { passive: true });
+    window.addEventListener('resize', requestSpineUpdate);
+};
+
 // Initialize Lenis Smooth Scroll
 const lenis = new Lenis({
     duration: 1.2,
@@ -156,6 +240,7 @@ gsap.ticker.lagSmoothing(0);
 window.addEventListener("scroll", function () { let e = document.querySelector(".navbar"); e && (window.scrollY > 50 ? e.classList.add("scrolled") : e.classList.remove("scrolled")) }), document.addEventListener("DOMContentLoaded", function () {
     // Initialize particle animation
     initParticleAnimation();
+    initProcessTimeline();
     
     let loader = document.getElementById("loading-screen"),
         home = document.getElementById("home");

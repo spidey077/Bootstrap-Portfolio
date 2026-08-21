@@ -117,6 +117,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
@@ -144,6 +145,7 @@
                     <li><a class="mobile-nav-link" href="#home">Home</a></li>
                     <li><a class="mobile-nav-link" href="#about">About</a></li>
                     <li><a class="mobile-nav-link" href="#projects">Projects</a></li>
+                    <li><a class="mobile-nav-link" href="#process">Process</a></li>
                     <li><a class="mobile-nav-link" href="#services">Services</a></li>
                     <li><a class="mobile-nav-link" href="#pricing">Pricing</a></li>
                     <li><a class="mobile-nav-link" href="#skills">Skills</a></li>
@@ -224,37 +226,32 @@
         <section id="about" class="py-5 text-black" style="background-color: #f8f9fa;">
             <div class="container" style="padding-top: 30px;padding-bottom: 20px;">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 text-center text-lg-start">
-                        <h2 class="display-4 fw-bold section reveal" style="font-family: 'Poppins', sans-serif;">About
-                            Me</h2>
-                        <p class="lead mt-3 section reveal"
-                            style="font-size: clamp(1rem, 2.3vw, 1.3rem); font-family: 'Roboto', sans-serif; line-height: 1.7;">
-                            I’m Muhammad Imdadullah, a Web Developer dedicated to building fast, high-converting digital
-                            solutions for growing businesses.
-                            Using modern tools like React, Next.js, and Tailwind CSS,
-                            I help clients launch scalable websites that deliver exceptional user experiences and drive
-                            real results
-
-                        </p>
-                        <a href="https://www.linkedin.com/in/imdadullah-chishti-888340326/"
+                    <div class="col-lg-7 col-md-7 text-start about-copy">
+                        <div class="site-section-header section-header-left">
+                            <p class="section-eyebrow section reveal">About Myself</p>
+                            <h2 class="site-section-heading fw-bold section reveal">Digital products built to make good businesses easier to trust and choose.</h2>
+                            <p class="site-section-subtext section reveal">I'm Muhammad Imdadullah, a Web Developer dedicated to building fast, high-converting digital solutions for growing businesses. Using modern tools like React, Next.js and Tailwind CSS, I help clients launch scalable websites that deliver exceptional user experiences and drive real results.</p>
+                        </div>
+                        <a href="/about"
                             class="btn btn-dark btn-lg mt-3 px-4 py-2 shadow-lg fw-semibold section reveal hover-target"
                             style="border-radius: 10px;">
                             Learn More
                         </a>
                     </div>
-                    <div class="col-lg-6 col-md-6 text-center mt-4 mt-lg-0 section reveal">
+                    <div class="col-lg-5 col-md-5 text-center mt-4 mt-lg-0 section reveal about-image">
                         <img src="/ProfileImage.jpeg" loading="lazy" alt="About Us Image" class="img-fluid shadow-lg"
-                            style="max-width: 50%; height: auto; border-radius: 30px;">
+                            style="max-width: 78%; height: auto; border-radius: 30px;">
                     </div>
                 </div>
             </div>
         </section>
         <section id="projects" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
-            <div class="container text-center" style="padding: 50px;">
-                <h2 class="display-4 fw-bold text-black" style="font-family: 'Poppins', sans-serif;">Web Projects</h2>
-                <p class="lead text-black mt-2" style="font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                    Explore recent client work and web applications built for speed, seamless UX, and high conversion.
-                </p>
+            <div class="container" style="padding: 50px;">
+                <div class="site-section-header section-header-center">
+                    <p class="section-eyebrow section reveal">Selected Work</p>
+                    <h2 class="site-section-heading fw-bold text-black section reveal">Websites that turn attention into action.</h2>
+                    <p class="site-section-subtext text-black section reveal">Explore focused digital experiences built to load quickly, feel effortless and move the right visitors toward a decision.</p>
+                </div>
 
                 <div class="card-slider-container mx-auto mt-5">
                     <div class="card-slider-track">
@@ -422,14 +419,13 @@
                 </div>
             </div>
         </section>
-        <section id="ai-projects" class="py-5" style="background-color: #ffffff;">
+        <section id="ai-projects" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
             <div class="container text-center" style="padding: 50px;">
-                <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">AI Automation
-                    Projects</h2>
-                <p class="lead text-dark mt-2" style="font-size: 1.2rem; font-family: 'Roboto', sans-serif;">
-                    Explore automated workflows and AI systems designed to cut manual tasks, save operational hours, and
-                    scale your business processes.
-                </p>
+                <div class="site-section-header section-header-center">
+                    <p class="section-eyebrow section reveal">AI Systems</p>
+                    <h2 class="site-section-heading fw-bold text-dark section reveal">Automation that gives your team time back.</h2>
+                    <p class="site-section-subtext text-dark section reveal">See practical AI workflows that reduce repetitive work, surface useful information and help the business scale with less friction.</p>
+                </div>
 
                 <div class="card-slider-container mx-auto mt-5">
                     <div class="card-slider-track">
@@ -622,19 +618,37 @@
             </div>
     </div>
     </section>
+    <section id="process" class="process-section" aria-labelledby="process-title">
+        <div class="container">
+            <div class="process-intro">
+                <p class="process-eyebrow process-reveal">The Process</p>
+                <h2 id="process-title" class="process-heading process-reveal">A simple path from first chat to finished site.</h2>
+                <p class="process-subtext process-reveal">Every project moves through the same connected stages — planning, structure, design and build — so nothing gets lost between idea and launch.</p>
+            </div>
+
+            <div class="process-timeline" data-process-timeline>
+                <div class="process-spine" aria-hidden="true">
+                    <span class="process-spine-progress"></span>
+                </div>
+                <ol class="process-steps" data-process-steps></ol>
+            </div>
+        </div>
+    </section>
     <section id="services" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
-        <div class="container text-center" style="padding: 50px;">
+        <div class="container" style="padding: 50px;">
+            <div class="services-layout row align-items-center gx-lg-5">
+                <div class="col-lg-3">
+                    <div class="site-section-header section-header-left">
+                        <p class="section-eyebrow section reveal">What I Build</p>
+                        <h2 class="site-section-heading fw-bold text-dark section reveal">Digital systems built for your next stage of growth.</h2>
+                        <p class="site-section-subtext text-dark section reveal">From high-converting websites to AI-native products and automations, each service is shaped around the way your business actually works.</p>
+                    </div>
+                </div>
 
-            <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Services</h2>
-            <p class="lead text-dark mt-2 mx-auto"
-                style="max-width: 600px; font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                From AI-native SaaS products to autonomous agent systems — built to scale your business, not just your
-                website.
-            </p>
+                <div class="col-lg-9">
+                    <div class="row justify-content-center">
 
-            <div class="row mt-5 justify-content-center">
-
-                <div class="col-md-6 col-lg-3 mb-4 section reveal">
+                <div class="col-md-6 col-lg-4 mb-4 section reveal">
                     <div class="card h-100 shadow-lg border-0 hover-target" style="transition: transform 0.3s ease;">
                         <div class="card-body text-dark px-4 py-5 d-flex flex-column justify-content-between">
                             <div>
@@ -664,7 +678,7 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-3 mb-4 section reveal">
+                <div class="col-md-6 col-lg-4 mb-4 section reveal">
                     <div class="card h-100 shadow-lg border-0 hover-target" style="transition: transform 0.3s ease;">
                         <div class="card-body text-dark px-4 py-5 d-flex flex-column justify-content-between">
                             <div>
@@ -698,7 +712,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 mb-4 section reveal">
+                <div class="col-md-6 col-lg-4 mb-4 section reveal">
                     <div class="card h-100 shadow-lg border-0 hover-target" style="transition: transform 0.3s ease;">
                         <div class="card-body text-dark px-4 py-5 d-flex flex-column justify-content-between">
                             <div>
@@ -727,18 +741,19 @@
                     </div>
                 </div>
 
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="pricing" class="py-5" style="background-color: #ffffff;">
         <div class="container text-center px-3 px-md-5 py-4 py-md-0">
-            <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Pricing</h2>
-            <p class="lead text-dark mt-2 mx-auto"
-                style="max-width: 700px; font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                Clear, flexible packages for websites, AI chat assistants, and automations built around your growth
-                goals.
-            </p>
+            <div class="site-section-header section-header-center">
+                <p class="section-eyebrow section reveal">Ways to Work Together</p>
+                <h2 class="site-section-heading fw-bold text-dark section reveal">A clear starting point for your next digital investment.</h2>
+                <p class="site-section-subtext text-dark section reveal">Choose a focused package or start a conversation about a custom system built around your goals, timeline and growth plans.</p>
+            </div>
 
             <div class="row mt-5 justify-content-center g-4">
                 <div class="col-md-6 col-lg-4 section reveal">
@@ -801,12 +816,12 @@
     </section>
 
     <section id="skills" class="py-5" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%);">
-        <div class="container text-center" style="padding: 50px;">
-            <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Skills</h2>
-            <p class="lead text-dark mt-2 mx-auto"
-                style="max-width: 600px; font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                My technical toolkit includes a variety of modern web technologies and design tools.
-            </p>
+        <div class="container" style="padding: 50px;">
+            <div class="site-section-header section-header-center">
+                <p class="section-eyebrow section reveal">The Toolkit</p>
+                <h2 class="site-section-heading fw-bold text-dark section reveal">Modern tools chosen to keep products fast and adaptable.</h2>
+                <p class="site-section-subtext text-dark section reveal">A practical mix of frontend, backend, automation and design technologies lets me choose the simplest strong solution for each project.</p>
+            </div>
 
             <div class="slider-container mx-auto mt-5 section reveal">
                 <div class="slider-track">
@@ -847,12 +862,12 @@
     </section>
 
     <section id="testimonials" class="py-5" style="background-color: #ffffff;">
-        <div class="container text-center" style="padding: 50px;">
-            <h2 class="display-4 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Client Testimonials</h2>
-            <p class="lead text-dark mt-2 mx-auto"
-                style="max-width: 600px; font-size: 1.3rem; font-family: 'Roboto', sans-serif;">
-                Hear what my clients have to say about my work and their experience.
-            </p>
+        <div class="container" style="padding: 50px;">
+            <div class="site-section-header section-header-center">
+                <p class="section-eyebrow section reveal">Client Perspective</p>
+                <h2 class="site-section-heading fw-bold text-dark section reveal">The work matters most when it moves the business forward.</h2>
+                <p class="site-section-subtext text-dark section reveal">Here is what clients noticed about the process, the communication and the finished digital experience.</p>
+            </div>
 
             <!-- Desktop: grid via CSS, Mobile: auto-scrolling slider via CSS -->
             <div class="testimonial-slider-container mt-5 section reveal">
@@ -1038,78 +1053,97 @@
 
     <section id="contact" style="background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%); width: 100%;">
         <div class="container py-4 py-md-5">
-            <div class="row justify-content-center section reveal py-4 py-md-5">
-                <div class="col-12 col-md-10 col-lg-8 text-center">
-                    <h2 class="display-4 fw-bold text-black mb-3">Get in touch</h2>
-                    <p class="lead text-black mb-5">I'd love to hear from you. Choose the best way to reach out below.
-                    </p>
-
-                    <!-- Option 1: WhatsApp Chat CTA -->
-                    <div class="card shadow-lg border-0 mb-4 p-4 text-center card-reveal"
-                        style="--card-delay: 0s; background: rgba(255, 255, 255, 0.9); border-radius: 20px;">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <i class="fab fa-whatsapp text-success" style="font-size: 3rem;"></i>
-                            </div>
-                            <h4 class="fw-bold text-dark">Chat on WhatsApp</h4>
-                            <p class="text-secondary mt-2 mb-4" style="max-width: 500px; margin: auto;">Have a quick
-                                question or want to discuss a project in real-time? Message me directly.</p>
-                            <a href="https://wa.me/923318962777" target="_blank"
-                                class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-target">
-                                Start Chat
-                            </a>
-                        </div>
+            <div class="row section reveal py-4 py-md-5 align-items-start">
+                <div class="col-12 col-lg-4">
+                    <div class="site-section-header section-header-center">
+                        <p class="section-eyebrow section reveal">Start a Conversation</p>
+                        <h2 class="site-section-heading fw-bold text-black section reveal">Bring the next idea, bottleneck or opportunity into focus.</h2>
+                        <p class="site-section-subtext text-black section reveal">Tell me what you are building or trying to improve, and choose the simplest way to take the conversation forward.</p>
                     </div>
+                </div>
 
-                    <!-- Option 2: Book a Call CTA -->
-                    <div class="card shadow-lg border-0 mb-4 p-4 text-center card-reveal"
-                        style="--card-delay: 0.15s; background: rgba(255, 255, 255, 0.9); border-radius: 20px;">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <i class="far fa-calendar-alt text-primary" style="font-size: 3rem;"></i>
+                <div class="col-12 col-lg-8">
+                    <div class="contact-actions row g-4">
+                        <div class="col-md-6">
+                            <!-- Option 1: WhatsApp Chat CTA -->
+                            <div class="card shadow-lg border-0 h-100 p-4 text-start card-reveal"
+                                style="--card-delay: 0s; background: rgba(255, 255, 255, 0.9); border-radius: 20px;">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <i class="fab fa-whatsapp text-success" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <h4 class="fw-bold text-dark">Chat on WhatsApp</h4>
+                                    <p class="text-secondary mt-2 mb-4" style="max-width: 500px;">Have a quick
+                                        question or want to discuss a project in real-time? Message me directly.</p>
+                                    <a href="https://wa.me/923318962777" target="_blank"
+                                        class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-target contact-action-button">
+                                        Start Chat
+                                    </a>
+                                </div>
                             </div>
-                            <h4 class="fw-bold text-dark">Book a Discovery Call</h4>
-                            <p class="text-secondary mt-2 mb-4" style="max-width: 500px; margin: auto;">Schedule a
-                                15-minute introductory call to discuss your business requirements and explore options.
-                            </p>
-                            <a href="https://cal.com/imdadullah/freecall" target="_blank" rel="noopener"
-                                class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold hover-target">
-                                Schedule a Call
-                            </a>
+                        </div>
 
+                        <div class="col-md-6">
+                            <!-- Option 2: Book a Call CTA -->
+                            <div class="card shadow-lg border-0 h-100 p-4 text-start card-reveal"
+                                style="--card-delay: 0.15s; background: rgba(255, 255, 255, 0.9); border-radius: 20px;">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <i class="far fa-calendar-alt text-primary" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <h4 class="fw-bold text-dark">Book a Discovery Call</h4>
+                                    <p class="text-secondary mt-2 mb-4" style="max-width: 500px;">Schedule a
+                                        15-minute introductory call to discuss your business requirements and explore options.
+                                    </p>
+                                    <a href="https://cal.com/imdadullah/freecall" target="_blank" rel="noopener"
+                                        class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold hover-target contact-action-button">
+                                        Schedule a Call
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Option 3: Form Option -->
-                    <div class="card shadow-lg border-0 p-4 text-start card-reveal"
+                    <div class="card contact-form-card shadow-lg border-0 p-4 text-start card-reveal"
                         style="--card-delay: 0.3s; background: rgba(255, 255, 255, 0.9); border-radius: 20px;">
                         <div class="card-body">
-                            <h4 class="fw-bold text-dark text-center mb-4">Contact Form</h4>
+                            <h4 class="fw-bold text-dark mb-4">Contact Form</h4>
                             <form action="https://getform.io/f/bwnqylra" method="POST" class="contact-form">
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold text-dark" for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Your Name" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold text-dark" for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold text-dark" for="phone">Phone</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone"
-                                        placeholder="Your Phone">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold text-dark" for="source">How did you hear about
-                                        us?</label>
-                                    <select class="form-select" id="source" name="source">
-                                        <option value="" disabled selected>Select an option</option>
-                                        <option value="LinkedIn">LinkedIn</option>
-                                        <option value="Website">Website</option>
-                                        <option value="Other">Other</option>
-                                    </select>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label fw-bold text-dark" for="name">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="Your Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label fw-bold text-dark" for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="Your Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label fw-bold text-dark" for="phone">Phone</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone"
+                                                placeholder="Your Phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label fw-bold text-dark" for="source">How did you hear about
+                                                us?</label>
+                                            <select class="form-select" id="source" name="source">
+                                                <option value="" disabled selected>Select an option</option>
+                                                <option value="LinkedIn">LinkedIn</option>
+                                                <option value="Website">Website</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label fw-bold text-dark" for="project-details">Project
@@ -1124,7 +1158,7 @@
                                         placeholder="Any additional comments"></textarea>
                                 </div>
                                 <button type="submit"
-                                    class="btn btn-dark px-5 py-3 rounded-pill fw-bold w-100 hover-target">Send</button>
+                                    class="btn btn-dark px-5 py-3 rounded-pill fw-bold contact-action-button hover-target">Send</button>
                             </form>
                         </div>
                     </div>
