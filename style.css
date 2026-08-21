@@ -1319,8 +1319,8 @@ footer a i:hover {
     max-width: 380px;
 }
 
-/* Hide clones on desktop — only show 3 real cards */
-.testimonial-slider-item:nth-child(n+4) {
+/* Hide clones on desktop — only show 4 real cards */
+.testimonial-slider-item:nth-child(n+5) {
     display: none;
 }
 
@@ -1505,8 +1505,8 @@ footer a i:hover {
         font-size: 0.85rem !important;
     }
 
-    /* Show all 6 items (3 real + 3 clones) for seamless loop */
-    .testimonial-slider-item:nth-child(n+4) {
+    /* Show all 8 items (4 real + 4 clones) for seamless loop */
+    .testimonial-slider-item:nth-child(n+5) {
         display: block;
     }
 
