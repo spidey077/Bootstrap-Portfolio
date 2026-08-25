@@ -1113,7 +1113,7 @@ h3 {
 /* Larger screens - make headline even bigger and bolder */
 @media (min-width: 1200px) {
     #home .hero-headline {
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-size: clamp(3rem, 6vw, 5rem);
         font-weight: 900;
     }
 }
@@ -1804,8 +1804,8 @@ footer a i:hover {
     }
 
     #home .hero-headline {
-        font-size: 1.85rem;
-        line-height: 1.25;
+        font-size: 2.2rem;
+        line-height: 1.2;
         text-align: center;
         font-weight: 900;
     }
