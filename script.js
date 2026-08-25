@@ -622,6 +622,12 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
             e.preventDefault();
             const target = this.getAttribute('href');
             if (target === '#') return;
+            
+            // Ensure lenis is running before scrolling (fixes mobile menu links)
+            if (typeof lenis !== "undefined" && lenis.start) {
+                lenis.start();
+            }
+
             lenis.scrollTo(target, {
                 offset: -70,
                 duration: 1.5,
