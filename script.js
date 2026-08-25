@@ -256,7 +256,7 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
         setTimeout(() => {
             home.classList.add("hero-revealed");
             // Staggered entrance for navbar items
-            gsap.from(".navbar-brand, .nav-item, .nav-whatsapp-btn", {
+            gsap.from(".navbar-brand, .nav-item", {
                 y: -20,
                 opacity: 0,
                 duration: 0.8,
@@ -310,14 +310,22 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     }
     if (letters.length > 0) animateLetters();
 
-    document.getElementById("lottie-animation1").addEventListener("click", function () {
-        let e = document.getElementById("about");
-        window.scrollTo({ top: e.offsetTop - 90, behavior: "smooth" })
-    });
+    const lottieAnimationAbout = document.getElementById("lottie-animation1");
+    if (lottieAnimationAbout) {
+        lottieAnimationAbout.addEventListener("click", function () {
+            const aboutSection = document.getElementById("about");
+            if (aboutSection) {
+                lenis.scrollTo(aboutSection, { offset: -90, duration: 1.2 });
+            }
+        });
+    }
 
-    document.getElementById("lottie-animation").addEventListener("click", function () {
-        window.location.href = "#home"
-    });
+    const lottieAnimationHome = document.getElementById("lottie-animation");
+    if (lottieAnimationHome) {
+        lottieAnimationHome.addEventListener("click", function () {
+            lenis.scrollTo("#home", { offset: -70, duration: 1.2 });
+        });
+    }
 
     const chatbotWrapper = document.getElementById("chatbot-wrapper");
     const chatbotContainer = chatbotWrapper.querySelector("#chatbotContainer");
@@ -669,14 +677,22 @@ window.addEventListener("scroll", function () { let e = document.querySelector("
     if (customToggle && mobileOverlay) {
         function openMenu() {
             customToggle.classList.add("open");
+            customToggle.setAttribute("aria-expanded", "true");
             mobileOverlay.classList.add("open");
             document.body.classList.add("menu-open");
+            if (typeof lenis !== "undefined" && lenis.stop) {
+                lenis.stop();
+            }
         }
 
         function closeMenu() {
             customToggle.classList.remove("open");
+            customToggle.setAttribute("aria-expanded", "false");
             mobileOverlay.classList.remove("open");
             document.body.classList.remove("menu-open");
+            if (typeof lenis !== "undefined" && lenis.start) {
+                lenis.start();
+            }
         }
 
         customToggle.addEventListener("click", () => {

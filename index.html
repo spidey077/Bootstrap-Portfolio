@@ -48,6 +48,8 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
 </head>
 
 <body>
@@ -86,9 +88,10 @@
         <div class="loader-panel right-panel"></div>
     </div>
     <div id="content">
-        <nav class="navbar navbar-expand-md fixed-top" style="background-color: #f5f7fa; padding: 20px;">
-            <div class="container">
-                <a class="navbar-brand" href="#">
+        <nav class="navbar fixed-top" id="navbar">
+            <div class="container navbar-inner">
+                <!-- Zone 1: Logo (Left) -->
+                <a class="navbar-brand fw-bold section reveal hover-target" href="#home">
                     <svg width="50" height="50" viewBox="0 0 796 669" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M49 217C32.6366 235.349 17.5406 307.829 30 360H4.5V545.5L150.5 528V349C153.981 293.362 168.798 279.004 212.5 276C259.298 294.528 260.675 317.225 258.5 360L225 349V507.5L368 452V325C377.431 290.794 381.531 270.706 442.5 276C474.505 296.688 482.615 314.988 479 360L442.5 349V422L609 360L601 276C574.032 214.645 545.213 186.362 464.5 149C390.12 145.48 356.509 155.89 309 193.5C286.162 172.348 268.805 162.212 225 149C151.607 149.131 112.352 159.942 49 217Z"
@@ -105,15 +108,11 @@
                             d="M661.5 41C655.722 74.1821 656.184 92.9655 688.5 128C740.599 142.892 762.861 130.808 795 87C798.335 41.9342 784.608 26.4536 753.5 2.99995C708.191 -3.76491 687.872 4.14697 661.5 41Z"
                             stroke="black" />
                     </svg>
-
                 </a>
-                <button class="custom-menu-toggle hover-target" aria-label="Toggle navigation">
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                    <span class="line line-3"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav mx-auto fw-bold section reveal hover-target">
+
+                <!-- Nav Links (Right) -->
+                <div class="navbar-links-zone navbar-desktop-only">
+                    <ul class="navbar-nav fw-bold section reveal hover-target">
                         <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
@@ -122,15 +121,13 @@
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <!-- Contact Button outside collapse for right-most positioning -->
-                <div class="d-none d-lg-flex align-items-center ms-lg-3 order-lg-3">
-                    <div class="d-none d-lg-flex align-items-center ms-lg-3 order-lg-3">
-                        <a href="https://cal.com/yourname/free-call" target="_blank" rel="noopener"
-                            class="btn btn-dark rounded-pill px-4 py-2 fw-bold hover-target nav-whatsapp-btn">
-                            Discuss a Project
-                        </a>
-                    </div>
-                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button type="button" class="custom-menu-toggle hover-target navbar-mobile-only" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="line line-1"></span>
+                    <span class="line line-2"></span>
+                    <span class="line line-3"></span>
+                </button>
             </div>
         </nav>
 
@@ -154,66 +151,73 @@
             </div>
         </div>
 
-        <div id="home"
-            style="padding-top: 120px; min-height: 100vh; background: linear-gradient(135deg, #f2f5ff 0%, #cfd6e6 100%); display: flex; flex-direction: column; justify-content: center;">
-            <canvas id="particle-canvas"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
-            <header class="container-fluid text-center py-4" style="position: relative; z-index: 10; color: #000;">
-
-                <!-- Social Proof Mini Banner -->
-                <div class="d-flex justify-content-center align-items-center gap-2 mb-4 section reveal">
-                    <div class="d-flex">
-                        <img src="/Client.jpeg" alt="Client Ahsan"
-                            class="rounded-circle border border-2 border-white shadow-sm"
-                            style="width: 40px; height: 40px; object-fit: cover;">
-                        <img src="/Client2.png" alt="Client Haider"
-                            class="rounded-circle border border-2 border-white shadow-sm"
-                            style="width: 40px; height: 40px; object-fit: cover; margin-left: -15px;">
-                        <div class="rounded-circle border border-2 border-white shadow-sm bg-dark text-white d-flex align-items-center justify-content-center hover-target"
-                            style="width: 40px; height: 40px; margin-left: -15px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
-                            5.0
+        <div id="home">
+            <canvas id="particle-canvas"></canvas>
+            <header class="container hero-header">
+                <div class="hero-content">
+                    <!-- Social Proof Mini Banner -->
+                    <div class="hero-social-proof d-flex align-items-center gap-2 mb-4 section reveal">
+                        <div class="d-flex">
+                            <img src="/Client.jpeg" alt="Client Ahsan"
+                                class="rounded-circle border border-2 border-white shadow-sm hero-client-avatar">
+                            <img src="/Client2.png" alt="Client Haider"
+                                class="rounded-circle border border-2 border-white shadow-sm hero-client-avatar hero-client-avatar--overlap">
+                            <div class="rounded-circle border border-2 border-white shadow-sm bg-dark text-white d-flex align-items-center justify-content-center hover-target hero-client-rating">
+                                5.0
+                            </div>
+                        </div>
+                        <div class="hero-social-copy text-start">
+                            <div class="hero-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="fw-bold hero-trust-label">Trusted by Growing Brands</span>
                         </div>
                     </div>
-                    <div class="text-start" style="line-height: 1.2; margin-left: 5px;">
-                        <div style="color: #f39c12; font-size: 0.85rem; margin-bottom: 2px;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                    <h1 class="hero-headline fw-bold mb-4 section reveal">
+                        Websites and AI systems <br>
+                        <em>built to grow your business</em>
+                    </h1>
+
+                    <p class="hero-subheadline lead mb-5 section reveal">
+                        I build websites with AI assistants that capture leads 24/7 — so you never miss a customer inquiry.
+                    </p>
+
+                    <div class="hero-cta d-flex flex-column flex-sm-row align-items-start gap-3 mb-4 section reveal">
+                        <a href="https://cal.com/imdadullah/freecall" target="_blank" rel="noopener"
+                            class="btn btn-dark btn-lg px-5 py-3 fw-bold hover-target hero-primary-btn">
+                            Book a free call
+                        </a>
+                        <a href="#process" class="hero-secondary-link text-decoration-none">
+                            See how it works <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats section reveal">
+                        <div class="hero-stats-row d-flex gap-5">
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">2s</div>
+                                <div class="hero-stat-label">AI Response Time</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">24/7</div>
+                                <div class="hero-stat-label">Lead Capture</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">100%</div>
+                                <div class="hero-stat-label">Responsive</div>
+                            </div>
                         </div>
-                        <span class="fw-bold" style="font-size: 0.9rem; color: #000;">Trusted by Growing Brands</span>
                     </div>
                 </div>
-
-                <!-- Clear Offer -->
-                <h1 class="display-2 fw-bold section reveal" style="font-family: 'Poppins', sans-serif; color: #000;">
-                    Crafting <span style="color: #000;">Digital Excellence</span><br> & Intelligent Solutions
-                </h1>
-
-                <p class="lead fw-normal mt-4 mx-auto mb-5 section reveal"
-                    style="font-size: clamp(1rem, 2.2vw, 1.3rem); max-width: 550px; color: #000; line-height: 1.6;">
-                    I build fast, modern websites integrated with AI Sales Assistants that answer customer
-                    questions 24/7 and capture high-value leads
-                </p>
-
-                <!-- CTA -->
-                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-3">
-                    <a href="https://cal.com/imdadullah/freecall" target="_blank" rel="noopener"
-                        class="btn btn-lg px-5 py-3 shadow-lg section reveal hover-target"
-                        style="border-radius: 12px; font-weight: 600; color: #fff; background-color: #333;">
-                        Book a Free Consultation Call
-                    </a>
-                </div>
-                <div class="row text-center"
-                    style="display: flex; justify-content: center; align-items: center; margin-top: 90px; margin-bottom: 20px;">
-                    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-                        type="module"></script>
-                    <dotlottie-player id="lottie-animation1" class="hover-target"
-                        src="https://lottie.host/91e26769-db68-4e8c-8cc1-3066a917ab96/rWq46X2g02.lottie"
-                        background="transparent" speed="1" style="width: 100px; height: 100px; cursor: pointer;" loop
-                        autoplay></dotlottie-player>
-                </div>
-
-
             </header>
+            <div class="hero-scroll-indicator section reveal" aria-hidden="true">
+                <dotlottie-player id="lottie-animation1" class="hover-target hero-scroll-lottie"
+                    src="https://lottie.host/91e26769-db68-4e8c-8cc1-3066a917ab96/rWq46X2g02.lottie"
+                    background="transparent" speed="1" loop autoplay>
+                </dotlottie-player>
+            </div>
         </div>
         <section id="about" class="py-5 text-black" style="background-color: #f8f9fa;">
             <div class="container" style="padding-top: 30px;padding-bottom: 20px;">
@@ -1194,8 +1198,6 @@
                 <!-- Lottie Button - Side on Desktop, Bottom on Mobile -->
                 <div class="col-12 col-md-2 order-2 order-md-1 d-flex justify-content-center justify-content-md-start">
                     <div class="lottie-wrapper ms-md-4">
-                        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-                            type="module"></script>
                         <dotlottie-player class="hover-target" id="lottie-animation"
                             src="https://lottie.host/da8ba66a-16fe-4772-ae7e-0c4065049aa8/Q8HIcqpa0A.lottie"
                             background="transparent" speed="1" style="width: 50px; height: 50px; cursor: pointer;" loop
