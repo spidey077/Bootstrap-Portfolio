@@ -1784,7 +1784,7 @@ footer a i:hover {
 
     /* Hero section mobile adjustments */
     #home {
-        padding-top: 100px;
+        padding-top: 160px;
         padding-bottom: 56px;
     }
 
@@ -1859,6 +1859,19 @@ footer a i:hover {
 
     /* Hide chatbot on mobile devices */
     #chatbot-wrapper {
+        display: none !important;
+    }
+
+    /* Contact section buttons - black on mobile */
+    #contact .btn-success,
+    #contact .btn-primary {
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
+    }
+
+    /* Contact section - hide icons on mobile */
+    #contact .card-body .mb-3 {
         display: none !important;
     }
 }
