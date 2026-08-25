@@ -791,183 +791,80 @@
                 <p class="site-section-subtext text-dark section reveal">Here is what clients noticed about the process, the communication and the finished digital experience.</p>
             </div>
 
-            <!-- Desktop: grid via CSS, Mobile: auto-scrolling slider via CSS -->
-            <div class="testimonial-slider-container mt-5 section reveal">
-                <div class="testimonial-slider-track">
+            <!-- Desktop: staggered marquee (clones in JS). Mobile: one card + nav buttons. -->
+            <div class="testimonial-slider-container mt-5 section reveal" data-testimonial-marquee>
+                <div class="testimonial-slider-viewport">
+                    <div class="testimonial-slider-track">
 
-                    <!-- Card 1: Ahsan -->
                     <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Client.jpeg" loading="lazy" alt="Client Ahsan"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Ahsan</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="far fa-star"></i>
+                        <article class="testimonial-card card shadow-lg border-0 hover-target">
+                            <blockquote class="testimonial-quote">
+                                <span class="testimonial-quote-mark" aria-hidden="true">&ldquo;</span>
+                                <p>He built a website for me by first creating the design. After I approved it, he developed the actual website. I really liked the design and everything.</p>
+                            </blockquote>
+                            <footer class="testimonial-meta">
+                                <div class="testimonial-stars" aria-label="4 out of 5 stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
                                 </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "He built a website for me by first creating the design. After I approved it, he
-                                    developed the actual website. I really liked the design and everything."
-                                </p>
-                            </div>
-                        </div>
+                                <cite class="testimonial-author">Ahsan</cite>
+                            </footer>
+                        </article>
                     </div>
 
-                    <!-- Card 2: Haider Ali -->
                     <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Client2.png" loading="lazy" alt="Client Haider Ali"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Haider Ali</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <article class="testimonial-card card shadow-lg border-0 hover-target">
+                            <blockquote class="testimonial-quote">
+                                <span class="testimonial-quote-mark" aria-hidden="true">&ldquo;</span>
+                                <p>The website's aesthetics, smooth animations, and overall design are absolutely fantastic. I really loved the final result!</p>
+                            </blockquote>
+                            <footer class="testimonial-meta">
+                                <div class="testimonial-stars" aria-label="4.5 out of 5 stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                                 </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "The website's aesthetics, smooth animations, and overall design are absolutely
-                                    fantastic. I really loved the final result!"
-                                </p>
-                            </div>
-                        </div>
+                                <cite class="testimonial-author">Haider Ali</cite>
+                            </footer>
+                        </article>
                     </div>
 
-                    <!-- Card 3: Ibrahim Bajwa -->
                     <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <div
-                                    style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: white; font-family: 'Poppins', sans-serif;">
-                                    I
+                        <article class="testimonial-card card shadow-lg border-0 hover-target">
+                            <blockquote class="testimonial-quote">
+                                <span class="testimonial-quote-mark" aria-hidden="true">&ldquo;</span>
+                                <p>Working with Imdadullah has been a great experience. He is committed to delivering quality work. His willingness to take ownership of tasks make him someone you can depend on.</p>
+                            </blockquote>
+                            <footer class="testimonial-meta">
+                                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Ibrahim Bajwa</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "Working with Imdadullah has been a great experience. He is committed to delivering
-                                    quality work. His willingness to take ownership of tasks make him someone you can
-                                    depend on."
-                                </p>
-                            </div>
-                        </div>
+                                <cite class="testimonial-author">Ibrahim Bajwa</cite>
+                            </footer>
+                        </article>
                     </div>
 
-                    <!-- Card 4: KICKPICK Client -->
                     <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Review3.jpeg" loading="lazy" alt="KICKPICK Client"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">KICKPICK</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <article class="testimonial-card card shadow-lg border-0 hover-target">
+                            <blockquote class="testimonial-quote">
+                                <span class="testimonial-quote-mark" aria-hidden="true">&ldquo;</span>
+                                <p>Exceeded expectations from start to finish! Great communication and an amazing final website. Highly recommend.</p>
+                            </blockquote>
+                            <footer class="testimonial-meta">
+                                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "Exceeded expectations from start to finish! Great communication and an amazing final website. Highly recommend."
-                                </p>
-                            </div>
-                        </div>
+                                <cite class="testimonial-author">KICKPICK</cite>
+                            </footer>
+                        </article>
                     </div>
 
-                    <!-- Duplicates for seamless mobile scroll -->
-                    <!-- Card 1: Ahsan (clone) -->
-                    <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Client.jpeg" loading="lazy" alt="Client Ahsan"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Ahsan</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "He built a website for me by first creating the design. After I approved it, he
-                                    developed the actual website. I really liked the design and everything."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Haider Ali (clone) -->
-                    <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Client2.png" loading="lazy" alt="Client Haider Ali"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Haider Ali</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "The website's aesthetics, smooth animations, and overall design are absolutely
-                                    fantastic. I really loved the final result!"
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Ibrahim Bajwa (clone) -->
-                    <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <div
-                                    style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: white; font-family: 'Poppins', sans-serif;">
-                                    I
-                                </div>
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">Ibrahim Bajwa</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "Working with Imdadullah has been a great experience. He is committed to delivering
-                                    quality work. His willingness to take ownership of tasks make him someone you can
-                                    depend on."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: KICKPICK Client (clone) -->
-                    <div class="testimonial-slider-item">
-                        <div class="card h-100 shadow-lg border-0 hover-target" style="padding: 2rem;">
-                            <div class="card-body text-dark d-flex flex-column align-items-center">
-                                <img src="/Review3.jpeg" loading="lazy" alt="KICKPICK Client"
-                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #111; margin-bottom: 20px;">
-                                <h5 class="fw-bold mb-1"
-                                    style="font-family: 'Poppins', sans-serif; font-size: 1.25rem;">KICKPICK</h5>
-                                <div style="color: #f39c12; margin-bottom: 15px;">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="card-text text-center"
-                                    style="font-size: 1.1rem; line-height: 1.6; font-style: italic;">
-                                    "Exceeded expectations from start to finish! Great communication and an amazing final website. Highly recommend."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
+                </div>
+                </div>
+                <div class="testimonial-slider-nav" aria-label="Testimonial navigation">
+                    <button type="button" class="testimonial-slider-btn testimonial-slider-btn--prev" aria-label="Previous testimonial">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="testimonial-slider-btn testimonial-slider-btn--next" aria-label="Next testimonial">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </div>
