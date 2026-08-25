@@ -1807,6 +1807,7 @@ footer a i:hover {
         font-size: 1.85rem;
         line-height: 1.25;
         text-align: center;
+        font-weight: 900;
     }
 
     #home .hero-headline em {
@@ -1854,6 +1855,11 @@ footer a i:hover {
     #navbar .navbar-brand svg {
         width: 40px !important;
         height: 40px !important;
+    }
+
+    /* Hide chatbot on mobile devices */
+    #chatbot-wrapper {
+        display: none !important;
     }
 }
 
